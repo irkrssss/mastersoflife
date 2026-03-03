@@ -3,29 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Masters of Life | Soulful Minimalism</title>
-    <meta name="description" content="Премиальные предметы интерьера. Апсайклинг винного стекла и точное столярное мастерство.">
+    <title>Masters of Life | Предметы с характером</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            /* Цветовая палитра: Earthy & Atmospheric */
-            --color-bg-dark: #151a16; /* Глубокий графит с зеленым подтоном */
-            --color-sage: #3e4a3d; /* Приглушенный шалфей */
-            --color-sage-light: #5b6e59;
-            --color-amber: #d97a46; /* Терракота / Янтарный свет */
-            --color-amber-glow: rgba(217, 122, 70, 0.4);
-            --color-text: #eae7e0; /* Теплый белый (бумага) */
-            --color-text-muted: #9aa099;
+            /* Палитра: Темное стекло, янтарный свет, графит */
+            --bg-color: #0d120e; 
+            --text-color: #e8e3d9; 
+            --accent-glow: #d97a46; 
+            --wood-dark: #2a2015;
+            --wood-light: #5c442e;
             
-            /* Шрифты */
             --font-serif: 'Cormorant Garamond', serif;
             --font-sans: 'Montserrat', sans-serif;
-            
-            --transition: 0.6s cubic-bezier(0.25, 1, 0.25, 1);
+            --transition: 0.5s cubic-bezier(0.25, 1, 0.25, 1);
         }
 
         * {
@@ -34,248 +29,321 @@
             box-sizing: border-box;
         }
 
+        html { scroll-behavior: smooth; }
+
         body {
-            background-color: var(--color-bg-dark);
-            color: var(--color-text);
+            background-color: var(--bg-color);
+            color: var(--text-color);
             font-family: var(--font-sans);
+            -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
             position: relative;
         }
 
-        /* Текстура: Tactile Grain (цифровой шум) */
+        /* Эффект тактильного шума (зернистость) */
         body::before {
             content: "";
             position: fixed;
             top: 0; left: 0; width: 100vw; height: 100vh;
             pointer-events: none;
             z-index: 9999;
-            opacity: 0.04;
-            background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noise)"/></svg>');
+            opacity: 0.05;
+            background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noise)"/></svg>');
         }
 
-        /* Хедер с эффектом матового стекла (Frosted glass) */
+        /* --- НАВИГАЦИЯ --- */
         header {
             position: fixed;
             top: 0; width: 100%;
-            padding: 2rem 5%;
+            padding: 1.5rem 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 100;
-            background: rgba(21, 26, 22, 0.6);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(234, 231, 224, 0.05);
+            background: rgba(13, 18, 14, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
         }
 
         .logo {
             font-family: var(--font-serif);
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             text-transform: uppercase;
             letter-spacing: 2px;
-            color: var(--color-text);
             text-decoration: none;
+            color: var(--text-color);
         }
 
+        .nav-links { display: flex; gap: 2rem; }
         .nav-links a {
-            color: var(--color-text);
+            color: var(--text-color);
             text-decoration: none;
-            margin-left: 2rem;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            transition: color 0.3s;
+            transition: color var(--transition);
+        }
+        .nav-links a:hover { color: var(--accent-glow); }
+
+        /* --- РИФМА С ПРОДУКТОМ (Многослойный шпон) --- */
+        /* Этот класс создает эффект слоев фанеры вокруг карточек и фото */
+        .layered-frame {
+            border-radius: 200px 200px 10px 10px; /* Арка - форма бутылки */
+            box-shadow: 
+                0 0 0 1px var(--wood-light),
+                0 0 0 3px var(--wood-dark),
+                0 0 0 4px var(--wood-light),
+                0 0 0 6px var(--wood-dark),
+                0 0 0 7px var(--wood-light);
+            background: var(--bg-color);
+            padding: 10px; /* Отступ от слоев до самой картинки */
+            transition: transform var(--transition);
         }
 
-        .nav-links a:hover {
-            color: var(--color-amber);
-        }
-
-        /* Hero Section */
+        /* --- 1. ГЛАВНАЯ (HERO) --- */
         .hero {
-            min-height: 100vh;
+            height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
             padding: 0 5%;
-            position: relative;
-            /* Легкое янтарное свечение на фоне */
-            background: radial-gradient(circle at 50% 40%, rgba(91, 110, 89, 0.2) 0%, transparent 60%);
+            background: radial-gradient(circle at 50% 50%, rgba(217, 122, 70, 0.08) 0%, transparent 60%);
         }
 
-        /* Ритм слоев (Architectural lines) на фоне Hero */
-        .hero::after {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: repeating-linear-gradient(
-                90deg,
-                transparent,
-                transparent 40px,
-                rgba(255, 255, 255, 0.02) 40px,
-                rgba(255, 255, 255, 0.02) 41px
-            );
-            z-index: -1;
-        }
-
-        .hero h1 {
+        .massive-title {
             font-family: var(--font-serif);
-            font-size: clamp(4rem, 10vw, 9rem);
+            font-size: clamp(3rem, 12vw, 10rem);
             font-weight: 400;
             line-height: 0.9;
             margin-bottom: 2rem;
+            text-transform: uppercase;
             letter-spacing: -2px;
         }
 
-        .hero h1 span {
-            font-style: italic;
-            color: var(--color-sage-light);
-        }
+        .massive-title span { color: var(--accent-glow); font-style: italic; }
 
         .hero p {
-            font-size: 1.1rem;
-            max-width: 500px;
-            color: var(--color-text-muted);
+            font-size: 1.2rem;
+            max-width: 600px;
             font-weight: 300;
             line-height: 1.6;
+            opacity: 0.8;
         }
 
-        /* Сетка продуктов (Soft Geometry: Арки) */
-        .portfolio {
-            padding: 5vh 5% 15vh;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 3rem;
-            max-width: 1600px;
+        /* Базовые стили секций */
+        section:not(.hero) {
+            padding: 15vh 5%;
+            max-width: 1400px;
             margin: 0 auto;
         }
 
-        .arch-card {
-            position: relative;
+        .section-header {
+            font-family: var(--font-serif);
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            color: var(--accent-glow);
+            text-align: center;
+        }
+
+        /* --- 2. О НАС --- */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            opacity: 0.9;
+        }
+
+        .about-image-wrapper {
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        .about-image-wrapper img {
+            width: 100%;
+            border-radius: 190px 190px 5px 5px;
+            aspect-ratio: 3/4;
+            object-fit: cover;
+            filter: grayscale(30%) contrast(1.1);
+        }
+
+        /* --- 3. КОЛЛЕКЦИЯ --- */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 4rem;
+            padding: 2rem 0;
+        }
+
+        .product-link {
             display: block;
             text-decoration: none;
-            /* Форма арки (сечение бутылки) */
-            border-radius: 200px 200px 10px 10px;
-            overflow: hidden;
-            aspect-ratio: 3 / 4;
-            background: var(--color-sage);
-            isolation: isolate;
+            color: inherit;
+            position: relative;
         }
 
-        .arch-card img {
+        .product-link:hover { transform: translateY(-10px); }
+
+        .product-media {
             width: 100%;
-            height: 100%;
+            aspect-ratio: 4/5;
             object-fit: cover;
-            transition: transform var(--transition), filter var(--transition);
-            filter: grayscale(20%) brightness(0.8);
+            border-radius: 190px 190px 5px 5px;
+            filter: brightness(0.85);
+            transition: filter var(--transition);
         }
 
-        /* Эффект янтарного света при наведении */
-        .arch-card::after {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: radial-gradient(circle at 50% 70%, var(--color-amber-glow) 0%, transparent 70%);
-            opacity: 0;
-            transition: opacity var(--transition);
-            mix-blend-mode: overlay;
-        }
+        .product-link:hover .product-media { filter: brightness(1.1); }
 
-        .card-content {
-            position: absolute;
-            bottom: 0; left: 0; right: 0;
-            padding: 3rem 2rem 2rem;
-            background: linear-gradient(to top, var(--color-bg-dark) 0%, transparent 100%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+        .product-info {
+            padding: 2rem 0;
             text-align: center;
-            transform: translateY(20px);
-            opacity: 0;
-            transition: all var(--transition);
         }
 
-        .arch-card:hover img {
-            transform: scale(1.03);
-            filter: grayscale(0%) brightness(1);
-        }
-
-        .arch-card:hover::after {
-            opacity: 1;
-        }
-
-        .arch-card:hover .card-content {
-            transform: translateY(0);
-            opacity: 1;
-        }
-
-        .card-title {
+        .product-title {
             font-family: var(--font-serif);
-            font-size: 2.2rem;
-            color: var(--color-text);
+            font-size: 2rem;
             margin-bottom: 0.5rem;
         }
 
-        .card-subtitle {
-            font-size: 0.8rem;
+        .product-desc {
+            font-size: 0.85rem;
             text-transform: uppercase;
             letter-spacing: 2px;
-            color: var(--color-amber);
+            color: var(--accent-glow);
         }
 
-        /* Адаптив */
+        /* --- 4. ФРАНШИЗА --- */
+        .franchise-block {
+            text-align: center;
+            background: rgba(255,255,255,0.02);
+            padding: 5rem 2rem;
+            /* Рифма: обратная арка */
+            border-radius: 10px 10px 200px 200px;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .franchise-block p { max-width: 600px; margin: 0 auto 3rem; line-height: 1.6; }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 3rem;
+            background: transparent;
+            border: 1px solid var(--accent-glow);
+            color: var(--accent-glow);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.8rem;
+            transition: all var(--transition);
+        }
+
+        .btn:hover { background: var(--accent-glow); color: var(--bg-color); }
+
+        /* --- 5. КОНТАКТЫ (FOOTER) --- */
+        footer {
+            padding: 10vh 5% 5vh;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .contact-info { margin-bottom: 3rem; }
+        .contact-info h3 { font-family: var(--font-serif); font-size: 2rem; margin-bottom: 1rem; }
+        .contact-info a { color: var(--text-color); text-decoration: none; margin: 0 1rem; transition: color 0.3s; }
+        .contact-info a:hover { color: var(--accent-glow); }
+        .copyright { font-size: 0.8rem; opacity: 0.5; }
+
         @media (max-width: 768px) {
             .nav-links { display: none; }
-            .portfolio { grid-template-columns: 1fr; gap: 2rem; padding: 5vh 5%; }
-            .arch-card { border-radius: 150px 150px 10px 10px; }
-            .card-content { transform: translateY(0); opacity: 1; background: linear-gradient(to top, rgba(21, 26, 22, 0.9) 0%, transparent 100%); }
+            .about-grid, .products-grid { grid-template-columns: 1fr; gap: 3rem; }
+            .massive-title { font-size: 4rem; }
+            .franchise-block { border-radius: 10px 10px 100px 100px; padding: 3rem 1rem; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <a href="#" class="logo">Masters of Life</a>
+        <a href="#home" class="logo">Masters of Life</a>
         <nav class="nav-links">
+            <a href="#about">О нас</a>
             <a href="#collection">Коллекция</a>
-            <a href="#about">О бренде</a>
             <a href="#franchise">Франшиза</a>
+            <a href="#contacts">Контакты</a>
         </nav>
     </header>
 
-    <section class="hero">
-        <h1>Warm <span>Minimalism</span></h1>
-        <p>Архитектура света. Мы соединяем 84 слоя березового шпона и переработанное стекло, создавая предметы с глубоким культурным кодом.</p>
+    <section class="hero" id="home">
+        <h1 class="massive-title">Masters<br><span>of Life</span></h1>
+        <p>Интерьер, который вызывает эмоции. Мы превращаем винные бутылки в технологичное искусство: от атмосферного света до эстетичной сервировки.</p>
     </section>
 
-    <section class="portfolio" id="collection">
-        
-        <a href="#" class="arch-card">
-            <img src="photo_2026-03-03 18.05.18.jpeg" alt="Лампа Amber Glow">
-            <div class="card-content">
-                <h2 class="card-title">Светильники</h2>
-                <span class="card-subtitle">Атмосферный свет</span>
+    <section id="about">
+        <div class="about-grid">
+            <div class="about-text">
+                <h2 class="section-header" style="text-align: left;">Манифест формы</h2>
+                <p>Наш путь начался с ручного ремесла и одной идеи — дать стеклу вторую жизнь, сохранив его благородство.</p>
+                <p>Сегодня Masters of Life — это переход от хаотичного плавления к серийному производству. Мы соединяем 84 слоя березового шпона и переработанное стекло, создавая предметы с глубоким культурным кодом и выверенной архитектурой.</p>
             </div>
-        </a>
-
-        <a href="#" class="arch-card">
-            <img src="вар 3.jpg" alt="Интерьерные тарелки">
-            <div class="card-content">
-                <h2 class="card-title">Сервировка</h2>
-                <span class="card-subtitle">Искусство фьюзинга</span>
+            <div class="about-image-wrapper layered-frame">
+                <img src="photo_2026-03-03 18.05.07.jpeg" alt="Процесс производства">
             </div>
-        </a>
-
-        <a href="#" class="arch-card" style="border-radius: 10px 10px 200px 200px;"> <img src="photo_2026-03-03 18.05.07.jpeg" alt="Производство Masters of Life">
-            <div class="card-content" style="bottom: auto; top: 0; background: linear-gradient(to bottom, var(--color-bg-dark) 0%, transparent 100%);">
-                <h2 class="card-title">Франшиза</h2>
-                <span class="card-subtitle">Технологичное ремесло</span>
-            </div>
-        </a>
-
+        </div>
     </section>
+
+    <section id="collection">
+        <h2 class="section-header">Коллекция</h2>
+        <div class="products-grid">
+            
+            <a href="lamp-amber.html" class="product-link">
+                <div class="layered-frame">
+                    <img src="photo_2026-03-03 18.05.18.jpeg" alt="Лампа Amber" class="product-media">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Светильник Amber</h3>
+                    <p class="product-desc">Атмосферный свет</p>
+                </div>
+            </a>
+
+            <a href="plates.html" class="product-link">
+                <div class="layered-frame">
+                    <img src="вар 3.jpg" alt="Тарелки из бутылок" class="product-media">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Набор сервировки</h3>
+                    <p class="product-desc">Искусство фьюзинга</p>
+                </div>
+            </a>
+
+        </div>
+    </section>
+
+    <section id="franchise">
+        <div class="franchise-block">
+            <h2 class="section-header" style="margin-bottom: 1.5rem;">Масштабируемое ремесло</h2>
+            <p>Откройте собственное высокомаржинальное производство. Мы передаем отлаженную технологию «безупречного результата»: от чертежей лазерной резки до секретов фьюзинга.</p>
+            <a href="#download" class="btn">Получить финмодель</a>
+        </div>
+    </section>
+
+    <footer id="contacts">
+        <div class="contact-info">
+            <h3>Свяжитесь с нами</h3>
+            <p style="margin-bottom: 2rem; opacity: 0.8;">hello@mastersoflife.ru | +7 (999) 000-00-00</p>
+            <a href="#">Telegram</a>
+            <a href="#">WhatsApp</a>
+            <a href="#">Instagram</a>
+        </div>
+        <p class="copyright">&copy; 2026 Masters of Life. Производство в России.</p>
+    </footer>
 
 </body>
 </html>
