@@ -3,29 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Masters of Life | Уникальный свет из переработанных бутылок</title>
-    <meta name="description" content="Лампы и тарелки из расплавленных винных бутылок. Уют, который стоит дорого. Сделано в России.">
+    <title>Masters of Life | Предметы с характером</title>
+    <meta name="description" content="Интерьер, который вызывает эмоции. Дизайнерские светильники и тарелки из переработанных винных бутылок.">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     
     <style>
-        /* ОСНОВНЫЕ СТИЛИ И ЦВЕТА */
         :root {
-            /* Фон - цвет зеленой винной бутылки */
-            --bg-color: #0b2512; 
-            /* Основной текст - светлый, для контраста */
-            --text-color: #f1f1f1; 
-            /* Тёплое оранжевое свечение (акцент) */
-            --accent-color: #ff9f43; 
-            /* Тёмный, для гридов и более тёмных элементов */
-            --dark-color: #081a0d; 
-            /* Деревянный акцент (как на фото) */
-            --wood-color: #a67c52; 
+            /* Цвет темного бутылочного стекла */
+            --bg-color: #0d1a11; 
+            /* Светлый текст для контраста */
+            --text-color: #eaeaea; 
+            /* Тёплое оранжевое/янтарное свечение */
+            --accent-glow: #ff9f43; 
+            --accent-dim: rgba(255, 159, 67, 0.2);
             
-            --main-font: 'Montserrat', sans-serif;
-            --heading-font: 'Playfair Display', serif;
+            --transition: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         * {
@@ -37,550 +32,197 @@
         body {
             background-color: var(--bg-color);
             color: var(--text-color);
-            font-family: var(--main-font);
-            line-height: 1.6;
+            font-family: 'Montserrat', sans-serif;
+            -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
         }
 
-        a {
+        /* 1. БЛОК С НАЗВАНИЕМ И ОПИСАНИЕМ */
+        .intro-section {
+            padding: 10vh 5% 5vh;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .massive-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 10vw, 12rem); /* Адаптивный огромный текст */
+            font-weight: 400;
+            line-height: 1;
+            margin-bottom: 2rem;
+            letter-spacing: -2px;
+            text-transform: uppercase;
+        }
+
+        .short-desc {
+            font-size: clamp(1rem, 2vw, 1.5rem);
+            max-width: 800px;
+            font-weight: 300;
+            line-height: 1.5;
+            color: rgba(234, 234, 234, 0.8);
+        }
+
+        /* 2. БЛОК С ВИДЕО */
+        .video-wrapper {
+            width: 95%;
+            margin: 0 auto 5vh auto;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            /* Пропорции 16:9 */
+            aspect-ratio: 16 / 9;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+
+        .main-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Заглушка, если видео не загрузится */
+        .video-fallback {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(45deg, #0d1a11, #1a3322);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: -1;
+        }
+
+        /* 3. КЛИКАБЕЛЬНАЯ СЕТКА ПРОДУКТОВ (АНИМАЦИИ/ФОТО) */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            padding: 0 2.5% 10vh;
+        }
+
+        .product-link {
+            display: block;
             text-decoration: none;
             color: inherit;
-            transition: color 0.3s ease;
-        }
-
-        ul {
-            list-style: none;
-        }
-
-        /* ХЕДЕР */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background-color: rgba(11, 37, 18, 0.9);
-            padding: 1.5rem 0;
-            z-index: 1000;
-            display: flex;
-            justify-content: center;
-        }
-
-        .header-content {
-            width: 90%;
-            max-width: 1200px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-family: var(--heading-font);
-            font-size: 1.8rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-        }
-
-        .nav-links a:hover {
-            color: var(--accent-color);
-        }
-
-        /* ХЕРО-БЛОК (ГЛАВНАЯ) */
-        .hero {
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: radial-gradient(circle, var(--accent-color) 0%, rgba(11, 37, 18, 0) 60%);
-            padding-top: 80px; /* Учитываем фиксированный хедер */
-        }
-
-        .hero-content {
-            width: 90%;
-            max-width: 1200px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            align-items: center;
-            gap: 2rem;
-        }
-
-        .hero-text {
-            text-align: left;
-        }
-
-        .hero h1 {
-            font-family: var(--heading-font);
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            line-height: 1.2;
-        }
-
-        .hero h1 span {
-            color: var(--accent-color);
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            font-weight: 300;
-            margin-bottom: 2rem;
-            opacity: 0.8;
-        }
-
-        .btn {
-            display: inline-block;
-            background-color: var(--accent-color);
-            color: var(--dark-color);
-            padding: 0.8rem 1.5rem;
-            font-weight: 700;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
-
-        .btn:hover {
-            background-color: #ffb86e;
-        }
-
-        /* ИНТЕРАКТИВНЫЙ ВКЛЮЧАТЕЛЬ/ВЫКЛЮЧАТЕЛЬ */
-        .hero-image {
             position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .lamp-photo {
-            max-height: 80vh;
-            filter: drop-shadow(0 0 20px var(--accent-color));
-        }
-
-        .lamp-toggle-container {
-            position: absolute;
-            bottom: 2rem;
-            right: 2rem;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            cursor: pointer;
-        }
-
-        .lamp-toggle-text {
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-
-        /* Стили для checkbox-переключателя */
-        .switch {
-          position: relative;
-          display: inline-block;
-          width: 50px;
-          height: 24px;
-        }
-
-        .switch input { 
-          opacity: 0;
-          width: 0;
-          height: 0;
-        }
-
-        .slider {
-          position: absolute;
-          cursor: pointer;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background-color: #555;
-          -webkit-transition: .4s;
-          transition: .4s;
-          border-radius: 34px;
-        }
-
-        .slider:before {
-          position: absolute;
-          content: "";
-          height: 18px;
-          width: 18px;
-          left: 3px;
-          bottom: 3px;
-          background-color: white;
-          -webkit-transition: .4s;
-          transition: .4s;
-          border-radius: 50%;
-        }
-
-        input:checked + .slider {
-          background-color: var(--accent-color);
-        }
-
-        input:focus + .slider {
-          box-shadow: 0 0 1px var(--accent-color);
-        }
-
-        input:checked + .slider:before {
-          -webkit-transform: translateX(26px);
-          -ms-transform: translateX(26px);
-          transform: translateX(26px);
-        }
-
-        /* ВКЛЮЧЕНИЕ СВЕТА В ЧЕКБОКСЕ */
-        #lamp-toggle:checked ~ .hero .hero-image .lamp-photo {
-            filter: drop-shadow(0 0 30px var(--accent-color));
-        }
-
-        #lamp-toggle:checked ~ .hero {
-            background: radial-gradient(circle, #ffb86e 0%, rgba(11, 37, 18, 0.1) 60%);
-        }
-
-        /* КОЛЛЕКЦИЯ */
-        .collection {
-            padding: 6rem 0;
-            display: flex;
-            justify-content: center;
-        }
-
-        .collection-content {
-            width: 90%;
-            max-width: 1200px;
-        }
-
-        .section-title {
-            font-family: var(--heading-font);
-            font-size: 2.8rem;
-            font-weight: 700;
-            margin-bottom: 3rem;
-            text-align: center;
-        }
-
-        .collection-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .collection-item {
-            background-color: var(--dark-color);
-            padding: 2rem;
-            border-radius: 10px;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            transition: transform 0.3s ease;
-        }
-
-        .collection-item:hover {
-            transform: translateY(-5px);
-        }
-
-        .item-photo {
-            max-width: 100%;
-            max-height: 250px;
-            margin-bottom: 1.5rem;
-            object-fit: contain;
-        }
-
-        .item-title {
-            font-family: var(--heading-font);
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-
-        .item-description {
-            font-size: 0.95rem;
-            opacity: 0.8;
-            margin-bottom: 1rem;
-        }
-
-        .item-price {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--accent-color);
-        }
-
-        /* ФРАНШИЗА / О НАС */
-        .about {
-            padding: 6rem 0;
-            background-color: var(--dark-color);
-            display: flex;
-            justify-content: center;
-        }
-
-        .about-content {
-            width: 90%;
-            max-width: 1200px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            align-items: center;
-            gap: 4rem;
-        }
-
-        .about-text h2 {
-            font-family: var(--heading-font);
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            line-height: 1.3;
-        }
-
-        .about-text p {
-            font-size: 1.1rem;
-            font-weight: 300;
-            margin-bottom: 2rem;
-            opacity: 0.8;
-        }
-
-        .about-image img {
-            max-width: 100%;
-            border-radius: 10px;
-            filter: drop-shadow(0 0 15px rgba(166, 124, 82, 0.4));
-        }
-
-        /* КОНТАКТЫ */
-        .contact {
-            padding: 6rem 0;
-            display: flex;
-            justify-content: center;
-        }
-
-        .contact-content {
-            width: 90%;
-            max-width: 1200px;
-            text-align: center;
-        }
-
-        .contact h2 {
-            font-family: var(--heading-font);
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-        }
-
-        .form-and-map {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: start;
-        }
-
-        .contact-form {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-            text-align: left;
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-
-        label {
-            font-size: 0.9rem;
-            font-weight: 500;
-            opacity: 0.9;
-        }
-
-        input, textarea {
-            padding: 1rem;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 5px;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            font-family: var(--main-font);
-            font-size: 1rem;
-        }
-
-        textarea {
-            resize: vertical;
-        }
-
-        .contact-form .btn {
-            border: none;
-            cursor: pointer;
-            text-align: center;
-            align-self: flex-start;
-        }
-
-        .privacy {
-            font-size: 0.8rem;
-            opacity: 0.6;
-            margin-top: -1rem;
-        }
-
-        .map {
-            height: 100%;
-            border-radius: 10px;
+            border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            aspect-ratio: 4 / 5; /* Вертикальный формат карточек */
+            background-color: #08120b;
         }
 
-        /* ФУТЕР */
-        footer {
-            padding: 3rem 0;
-            background-color: var(--dark-color);
-            text-align: center;
-            opacity: 0.7;
+        .product-media {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform var(--transition), filter var(--transition);
+            filter: brightness(0.8);
         }
 
-        .footer-logo {
-            font-family: var(--heading-font);
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
+        .product-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at 50% 50%, var(--accent-dim) 0%, transparent 60%);
+            opacity: 0;
+            transition: opacity var(--transition);
+            display: flex;
+            align-items: flex-end;
+            padding: 2rem;
         }
 
-        /* АДАПТИВНОСТЬ */
-        @media (max-width: 900px) {
-            .hero-content, .collection-grid, .about-content, .form-and-map {
+        .product-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all var(--transition);
+            text-shadow: 0 4px 15px rgba(0,0,0,0.8);
+        }
+
+        /* Эффекты при наведении */
+        .product-link:hover .product-media {
+            transform: scale(1.05);
+            filter: brightness(1.1);
+        }
+
+        .product-link:hover .product-overlay {
+            opacity: 1;
+        }
+
+        .product-link:hover .product-title {
+            transform: translateY(0);
+            opacity: 1;
+            color: var(--accent-glow);
+        }
+
+        /* Адаптация под телефоны */
+        @media (max-width: 768px) {
+            .products-grid {
                 grid-template-columns: 1fr;
+                gap: 1rem;
             }
-
-            .hero, .collection, .about, .contact {
-                padding: 4rem 0;
+            .product-link {
+                aspect-ratio: 1 / 1; /* На телефоне квадратные */
             }
-
-            .section-title {
-                font-size: 2.2rem;
+            .product-overlay {
+                opacity: 1; /* На телефоне текст видно сразу */
+                background: linear-gradient(to top, rgba(13, 26, 17, 0.9), transparent 50%);
+            }
+            .product-title {
+                transform: translateY(0);
+                opacity: 1;
+                font-size: 1.8rem;
             }
         }
     </style>
 </head>
-<body id="page-top" itemscope itemtype="https://schema.org/Organization">
+<body>
 
-    <input type="checkbox" id="lamp-toggle" style="display: none;">
-
-    <header>
-        <div class="header-content">
-            <a href="#page-top" class="logo" itemprop="name">Masters of Life</a>
-            <nav class="nav-links">
-                <a href="#collection">Коллекция</a>
-                <a href="#about">Франшиза</a>
-                <a href="#contact">Контакты</a>
-            </nav>
-        </div>
-    </header>
-
-    <section class="hero" id="hero">
-        <div class="hero-content">
-            <div class="hero-text">
-                <h1>Интерьер,<br>который вызывает <span>эмоции</span>.</h1>
-                <p itemprop="description">Лампы и тарелки из расплавленных винных бутылок. Уют, который стоит дорого. Сделано в России.</p>
-                <a href="#collection" class="btn">СМОТРЕТЬ КОЛЛЕКЦИЮ</a>
-            </div>
-            <div class="hero-image">
-                <img src="photo_2026-03-03 18.05.07.jpeg" alt="Лампа из винной бутылки" class="lamp-photo">
-                <div class="lamp-toggle-container">
-                    <span class="lamp-toggle-text">Включить уют</span>
-                    <label class="switch">
-                        <input type="checkbox" id="lamp-switch">
-                        <span class="slider"></span>
-                    </label>
-                </div>
-            </div>
-        </div>
+    <section class="intro-section">
+        <h1 class="massive-title">Masters<br>of Life</h1>
+        <p class="short-desc">Интерьер, который вызывает эмоции. Мы превращаем винные бутылки в предметы искусства: от тёплого света до эстетичной сервировки.</p>
     </section>
 
-    <section class="collection" id="collection">
-        <div class="collection-content">
-            <h2 class="section-title">НАША КОЛЛЕКЦИЯ</h2>
-            <div class="collection-grid">
-                
-                <article class="collection-item" itemscope itemtype="https://schema.org/Product">
-                    <img src="photo_2026-03-03 18.05.18.jpeg" alt="Лампа Amber Glow" class="item-photo" itemprop="image">
-                    <div>
-                        <h3 class="item-title" itemprop="name">Лампа "Amber Glow"</h3>
-                        <p class="item-description" itemprop="description">Настольная лампа из расплавленной бутылки на деревянной основе. Тёплое, уютное свечение.</p>
-                        <p class="item-price" itemprop="offers" itemscope itemtype="https://schema.org/Offer">Цена: <span itemprop="price">3990</span> ₽.</p>
-                    </div>
-                </article>
-
-                <article class="collection-item" itemscope itemtype="https://schema.org/Product">
-                    <img src="вар 3.jpg" alt="НАБОР ИЗ 3 ТАРЕЛОК БУТЫЛКИ" class="item-photo" itemprop="image">
-                    <div>
-                        <h3 class="item-title" itemprop="name">НАБОР ИЗ 3 ТАРЕЛОК</h3>
-                        <p class="item-description" itemprop="description">Уникальные сервировочные тарелки в форме бутылок. Отличный подарок.</p>
-                        <p class="item-price" itemprop="offers" itemscope itemtype="https://schema.org/Offer">Цена: <span itemprop="price">2250</span> ₽.</p>
-                    </div>
-                </article>
-
-                <article class="collection-item" itemscope itemtype="https://schema.org/Product">
-                    <img src="photo_2026-03-03 18.05.12.jpeg" alt="Настольная лампа" class="item-photo" itemprop="image">
-                    <div>
-                        <h3 class="item-title" itemprop="name">Настольная лампа</h3>
-                        <p class="item-description" itemprop="description">Компактная лампа с геометрическим узором. Стильный акцент.</p>
-                        <p class="item-price" itemprop="offers" itemscope itemtype="https://schema.org/Offer">Цена: <span itemprop="price">2800</span> ₽.</p>
-                    </div>
-                </article>
-
-            </div>
-        </div>
+    <section class="video-wrapper">
+        <video class="main-video" autoplay loop muted playsinline>
+            <source src="main-video.mp4" type="video/mp4">
+        </video>
+        <div class="video-fallback">Здесь будет красивое видео процесса или продукта</div>
     </section>
 
-    <section class="about" id="about">
-        <div class="about-content">
-            <div class="about-text">
-                <h2>Франшиза производства<br>предметов интерьера.</h2>
-                <p>Откройте своё производство уникальных предметов из переработанных бутылок. Мы передаём технологии, чертежи для лазера и обучаем фьюзингу. Инвестиции от 390 000 ₽. Масштабируемое ремесло.</p>
-                <a href="#contact" class="btn">ПОЛУЧИТЬ ФИНАНСОВУЮ МОДЕЛЬ</a>
-            </div>
-            <div class="about-image">
-                <img src="Snimok_ekrana_2026-03-03_v_18.14.40.png" alt="Процесс производства" itemprop="image">
-            </div>
-        </div>
-    </section>
-
-    <section class="contact" id="contact">
-        <div class="contact-content">
-            <h2 class="section-title">СВЯЖИТЕСЬ С НАМИ</h2>
-            <div class="form-and-map">
-                <form class="contact-form" action="#" method="post">
-                    <div class="form-group">
-                        <label for="name">Ваше имя *</label>
-                        <input type="text" id="name" name="name" placeholder="Иван Иванов" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Телефон/Email *</label>
-                        <input type="text" id="email" name="email" placeholder="+79123456789 или email@example.com" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Сообщение</label>
-                        <textarea id="message" name="message" rows="5" placeholder="Я хочу заказать лампу..." required></textarea>
-                    </div>
-                    <p class="privacy">Нажимая кнопку, вы соглашаетесь на обработку персональных данных.</p>
-                    <button type="submit" class="btn">ОТПРАВИТЬ</button>
-                </form>
-                <div class="map">
-                    <div style="width: 100%; height: 100%; background-color: var(--dark-color); display: flex; justify-content: center; align-items: center; color: #555;">
-                        <span>Здесь будет карта (локальное SEO)</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="footer-logo">Masters of Life</div>
-        <p>&copy; 2026. Все права защищены.</p>
-    </footer>
-
-    <script>
-        const lampToggleInput = document.getElementById('lamp-toggle');
-        const lampSwitchInput = document.getElementById('lamp-switch');
+    <section class="products-grid">
         
-        lampSwitchInput.addEventListener('change', () => {
-            lampToggleInput.checked = lampSwitchInput.checked;
-        });
+        <a href="lamp-amber.html" class="product-link">
+            <img src="photo_2026-03-03 18.05.18.jpeg" alt="Лампа Amber" class="product-media">
+            <div class="product-overlay">
+                <h2 class="product-title">Светильник Amber</h2>
+            </div>
+        </a>
 
-        lampToggleInput.addEventListener('change', () => {
-            lampSwitchInput.checked = lampToggleInput.checked;
-        });
-    </script>
+        <a href="plates.html" class="product-link">
+            <img src="вар 3.jpg" alt="Тарелки из бутылок" class="product-media">
+            <div class="product-overlay">
+                <h2 class="product-title">Набор для сервировки</h2>
+            </div>
+        </a>
+
+        <a href="lamp-accent.html" class="product-link">
+            <img src="photo_2026-03-03 18.05.12.jpeg" alt="Лампа Accent" class="product-media">
+            <div class="product-overlay">
+                <h2 class="product-title">Лампа Accent</h2>
+            </div>
+        </a>
+
+        <a href="franchise.html" class="product-link">
+            <img src="photo_2026-03-03 18.05.07.jpeg" alt="Франшиза производства" class="product-media" style="filter: grayscale(50%) brightness(0.6);">
+            <div class="product-overlay">
+                <h2 class="product-title">Открыть производство</h2>
+            </div>
+        </a>
+
+    </section>
+
 </body>
 </html>
