@@ -3,279 +3,300 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BottleCraft | Тепло в каждой детали</title>
+    <title>Masters of Life | Авторские предметы интерьера</title>
+    <meta name="description" content="Интерьер, который вызывает эмоции. Дизайнерские светильники и тарелки из переработанных винных бутылок. Закажите декор или откройте производство по франшизе.">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+    
     <style>
+        /* Цветовая палитра из ТЗ */
         :root {
-            --bg-color: #121212;
-            --text-color: #eaeaea;
-            --text-muted: #a0a0a0;
-            --glow-color: transparent;
-            --accent-color: #d4a373;
-            --card-bg: #1e1e1e;
-            --transition-speed: 0.8s;
+            --color-graphite: #2b2b2b;
+            --color-graphite-dark: #1a1a1a;
+            --color-olive: #4a5d23;
+            --color-olive-light: #6b8436;
+            --color-wood: #a67c52;
+            --color-text: #f0f0f0;
+            --color-text-muted: #b0b0b0;
+            --glow: transparent;
+            --transition: 0.5s ease;
         }
 
-        /* Состояние "Свет включен" */
-        body.light-on {
-            --bg-color: #24180d; /* Теплый темный оттенок */
-            --glow-color: radial-gradient(circle, rgba(212,163,115,0.2) 0%, rgba(36,24,13,0) 70%);
-            --text-color: #fff9f2;
+        /* Состояние включенного света */
+        body.lights-on {
+            --color-graphite-dark: #241d18;
+            --color-graphite: #362c25;
+            --glow: radial-gradient(circle at 50% 30%, rgba(166, 124, 82, 0.15) 0%, rgba(26, 26, 26, 0) 60%);
+            --color-text: #fffdfa;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        html { scroll-behavior: smooth; }
 
         body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
             font-family: 'Montserrat', sans-serif;
-            transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
-            overflow-x: hidden;
+            background-color: var(--color-graphite-dark);
+            color: var(--color-text);
+            line-height: 1.6;
+            transition: background-color var(--transition);
         }
 
-        h1, h2, h3 {
-            font-family: 'Playfair Display', serif;
-            font-weight: 400;
-        }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; }
 
+        /* Навигация */
         header {
-            padding: 2rem 5%;
+            position: fixed;
+            top: 0; width: 100%;
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 100;
-            background: linear-gradient(to bottom, rgba(18,18,18,0.9), transparent);
         }
 
-        .logo {
-            font-size: 1.5rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
+        .logo { font-size: 1.5rem; font-weight: 600; letter-spacing: 1px; color: var(--color-wood); text-decoration: none;}
+
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a { color: var(--color-text); text-decoration: none; font-size: 0.9rem; transition: color 0.3s; padding: 10px 0; }
+        .nav-links a:hover { color: var(--color-wood); }
+
+        /* Переключатель света */
+        .switch-btn {
+            background: transparent;
+            border: 1px solid var(--color-wood);
+            color: var(--color-wood);
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-family: inherit;
+            min-height: 48px; /* Требование ТЗ для кликабельности */
+            transition: all 0.3s;
+        }
+        body.lights-on .switch-btn {
+            background: var(--color-wood);
+            color: #fff;
+            box-shadow: 0 0 15px rgba(166, 124, 82, 0.4);
         }
 
-        /* Главный экран (Hero) */
+        /* Главный экран */
         .hero {
             height: 100vh;
             display: flex;
-            flex-direction: column;
+            align-items: center;
             justify-content: center;
-            align-items: center;
             text-align: center;
-            position: relative;
-            background: var(--glow-color);
-            transition: background var(--transition-speed) ease;
             padding: 0 5%;
-        }
-
-        .hero h1 {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            z-index: 2;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            color: var(--text-muted);
-            max-width: 600px;
-            margin-bottom: 3rem;
-            z-index: 2;
-        }
-
-        /* Переключатель света */
-        .switch-container {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            z-index: 2;
-            cursor: pointer;
-        }
-
-        .switch-label {
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .switch {
-            width: 60px;
-            height: 30px;
-            background-color: #333;
-            border-radius: 30px;
+            background: var(--glow);
             position: relative;
-            transition: background-color 0.4s;
+            margin-top: 60px;
         }
+        .hero h1 { font-size: 4vw; margin-bottom: 1rem; line-height: 1.2; }
+        .hero p { font-size: 1.2rem; max-width: 600px; margin: 0 auto; color: var(--color-text-muted); }
 
-        .switch::after {
-            content: '';
-            position: absolute;
-            top: 3px;
-            left: 3px;
-            width: 24px;
-            height: 24px;
-            background-color: #fff;
-            border-radius: 50%;
-            transition: transform 0.4s cubic-bezier(0.4, 0.0, 0.2, 1);
-        }
+        /* Секции */
+        section { padding: 5rem 5%; max-width: 1200px; margin: 0 auto; }
+        .section-title { font-size: 2.5rem; margin-bottom: 3rem; text-align: center; color: var(--color-wood); }
 
-        body.light-on .switch {
-            background-color: var(--accent-color);
-            box-shadow: 0 0 15px var(--accent-color);
-        }
-
-        body.light-on .switch::after {
-            transform: translateX(30px);
-        }
-
-        /* Секция продуктов */
-        .products {
-            padding: 5rem 5%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 4rem;
-        }
-
-        .grid {
+        /* О нас */
+        .about-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 3rem;
-        }
-
-        .card {
-            background-color: var(--card-bg);
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            background: var(--color-graphite);
+            padding: 3rem;
             border-radius: 12px;
+            border-left: 4px solid var(--color-olive);
+        }
+
+        /* Карточки товаров */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: var(--color-graphite);
+            border-radius: 8px;
             overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.3s;
         }
+        .product-card:hover { transform: translateY(-5px); }
+        .product-card img { width: 100%; height: 350px; object-fit: cover; border-bottom: 2px solid var(--color-olive); }
+        .product-info { padding: 2rem; }
+        .product-title { font-size: 1.5rem; margin-bottom: 0.5rem; }
+        .product-desc { color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 1.5rem; }
+        .product-price { font-weight: 600; font-size: 1.2rem; color: var(--color-wood); }
 
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-
-        /* Заглушки для твоих фото. Замени src на имена своих файлов! */
-        .card-img {
-            width: 100%;
-            height: 400px;
-            object-fit: cover;
-            border-bottom: 1px solid #333;
-        }
-
-        .card-content {
-            padding: 2rem;
-        }
-
-        .card-title {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .card-desc {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-        }
-
-        .price {
-            font-size: 1.25rem;
-            color: var(--accent-color);
-            font-weight: 500;
-        }
-
-        footer {
+        /* Франшиза */
+        .franchise-block {
+            background: linear-gradient(135deg, var(--color-graphite) 0%, var(--color-graphite-dark) 100%);
+            padding: 4rem;
+            border-radius: 12px;
             text-align: center;
-            padding: 3rem 5%;
-            border-top: 1px solid #333;
-            margin-top: 4rem;
-            color: var(--text-muted);
-            font-size: 0.9rem;
+            border: 1px solid rgba(255,255,255,0.05);
         }
+        .franchise-stats { display: flex; justify-content: center; gap: 3rem; margin: 2rem 0; flex-wrap: wrap; }
+        .stat-item h4 { font-size: 2rem; color: var(--color-olive-light); }
+        
+        /* Форма */
+        .lead-form { max-width: 400px; margin: 0 auto; display: flex; flex-direction: column; gap: 1rem; }
+        .lead-form input {
+            padding: 15px;
+            border-radius: 4px;
+            border: 1px solid #444;
+            background: rgba(255,255,255,0.05);
+            color: #fff;
+            font-family: inherit;
+            min-height: 48px;
+        }
+        .lead-form button {
+            background: var(--color-olive);
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            min-height: 48px;
+            transition: background 0.3s;
+        }
+        .lead-form button:hover { background: var(--color-olive-light); }
+        .privacy-note { font-size: 0.75rem; color: #888; }
 
+        footer { text-align: center; padding: 2rem; border-top: 1px solid #333; margin-top: 3rem; }
+
+        /* Мобильная адаптация */
         @media (max-width: 768px) {
+            .nav-links { display: none; /* Для мобильных нужен бургер-меню, пока скрываем ссылки */ }
             .hero h1 { font-size: 2.5rem; }
+            .about-grid { grid-template-columns: 1fr; padding: 2rem; }
+            .franchise-block { padding: 2rem 1rem; }
+            .franchise-stats { gap: 1.5rem; flex-direction: column; }
         }
     </style>
 </head>
-<body>
+<body itemscope itemtype="https://schema.org/Organization">
 
     <header>
-        <div class="logo">BottleCraft</div>
-        <div class="switch-container" id="lightSwitch">
-            <span class="switch-label">Включить уют</span>
-            <div class="switch"></div>
+        <div class="nav-container">
+            <a href="#" class="logo" itemprop="name">Masters of Life</a>
+            <nav class="nav-links">
+                <a href="#about">О нас</a>
+                <a href="#plates">Тарелки</a>
+                <a href="#lamps">Светильники</a>
+                <a href="#franchise">Франшиза</a>
+                <button class="switch-btn" id="lightToggle">Включить свет</button>
+            </nav>
         </div>
     </header>
 
-    <section class="hero">
-        <h1>Свет. Стекло. Атмосфера.</h1>
-        <p>Уникальные предметы интерьера из переработанных винных бутылок. Мы сохраняем форму, добавляя тепло и новую жизнь в каждую деталь.</p>
-    </section>
+    <main>
+        <section class="hero" id="hero">
+            <div>
+                <h1>Интерьер, который<br>вызывает эмоции</h1>
+                <p>Предметы с характером. Авторские светильники и тарелки ручной работы из переработанных материалов.</p>
+            </div>
+        </section>
 
-    <section class="products">
-        <h2 class="section-title">Коллекция</h2>
-        
-        <div class="grid">
-            <div class="card">
-                <img src="photo_2026-03-03 18.05.18.jpeg" alt="Лампа из винной бутылки" class="card-img">
-                <div class="card-content">
-                    <h3 class="card-title">Лампа «Вечерний Свет»</h3>
-                    <p class="card-desc">Массивное стекло, скрывающее винтажную нить накаливания. Идеально для прикроватной тумбочки или уютных кухонных разговоров.</p>
-                    <div class="price">От 3 500 ₽</div>
+        <section id="about">
+            <div class="about-grid">
+                <div>
+                    <h2 class="section-title" style="text-align: left; margin-bottom: 1rem;">О бренде</h2>
+                    <p>С 2023 года мы прошли путь от штучной ремесленной работы до выверенного серийного производства. Masters of Life — это манифест осознанного потребления, воплощенный в эстетике лофта и натуральных материалов. Мы не просто перерабатываем стекло, мы создаем культурный код вашего интерьера.</p>
+                </div>
+                <div>
+                    <img src="photo_2026-03-03 18.05.07.jpeg" alt="Процесс создания предметов Masters of Life" style="width: 100%; border-radius: 8px;">
                 </div>
             </div>
+        </section>
 
-            <div class="card">
-                <img src="вар 3.jpg" alt="Сервировочные тарелки из бутылок" class="card-img">
-                <div class="card-content">
-                    <h3 class="card-title">Набор для сервировки</h3>
-                    <p class="card-desc">Расплавленные винные бутылки, превратившиеся в стильные менажницы для сыра, закусок и фруктов. Подарочная упаковка включена.</p>
-                    <div class="price">От 2 800 ₽</div>
-                </div>
+        <section id="plates">
+            <h2 class="section-title">Искусство апсайклинга</h2>
+            <div class="products-grid">
+                <article class="product-card" itemscope itemtype="https://schema.org/Product">
+                    <img src="вар 3.jpg" alt="Интерьерные тарелки из винных бутылок" itemprop="image">
+                    <div class="product-info">
+                        <h3 class="product-title" itemprop="name">Интерьерные тарелки</h3>
+                        <p class="product-desc" itemprop="description">Знакомая форма в новом прочтении. Менажницы и сервировочные блюда, созданные методом фьюзинга. Идеально для ресторанов и корпоративных подарков.</p>
+                        <div class="product-price">от <span itemprop="price">2 250</span> ₽</div>
+                    </div>
+                </article>
             </div>
+        </section>
 
-            <div class="card">
-                <img src="photo_2026-03-03 18.05.12.jpeg" alt="Лампа для романтического ужина" class="card-img">
-                <div class="card-content">
-                    <h3 class="card-title">Лампа «Праздничная»</h3>
-                    <p class="card-desc">Декор, который делает любой ужин особенным. Эффектно смотрится в сервировке праздничного стола.</p>
-                    <div class="price">От 4 000 ₽</div>
-                </div>
+        <section id="lamps">
+            <h2 class="section-title">Свет и фактура</h2>
+            <div class="products-grid">
+                <article class="product-card" itemscope itemtype="https://schema.org/Product">
+                    <img src="photo_2026-03-03 18.05.18.jpeg" alt="Светильник из шпона и бутылки" itemprop="image">
+                    <div class="product-info">
+                        <h3 class="product-title" itemprop="name">Дизайнерские светильники</h3>
+                        <p class="product-desc" itemprop="description">84 слоя березового шпона, монолитная конструкция и оливковое стекло. Теплый спектр света, раскрывающий культурный код винной бутылки XVII века.</p>
+                        <div class="product-price">Под заказ</div>
+                    </div>
+                </article>
+                
+                <article class="product-card" itemscope itemtype="https://schema.org/Product">
+                    <img src="photo_2026-03-03 18.05.12.jpeg" alt="Настольная лампа Masters of Life" itemprop="image">
+                    <div class="product-info">
+                        <h3 class="product-title" itemprop="name">Лампа Accent</h3>
+                        <p class="product-desc" itemprop="description">Акцентное освещение для премиум-интерьеров. Строгая геометрия дерева и мягкий свет расплавленного стекла.</p>
+                        <div class="product-price">Под заказ</div>
+                    </div>
+                </article>
             </div>
-        </div>
-    </section>
+        </section>
+
+        <section id="franchise" itemscope itemtype="https://schema.org/Service">
+            <div class="franchise-block">
+                <h2 class="section-title" style="margin-bottom: 1rem;" itemprop="name">Масштабируемое ремесло</h2>
+                <p style="margin-bottom: 2rem;">Откройте собственное производство по технологии "безупречного результата". Мы передаем чертежи, обучаем фьюзингу и помогаем с запуском.</p>
+                
+                <div class="franchise-stats">
+                    <div class="stat-item">
+                        <h4>от 390 тыс. ₽</h4>
+                        <p>Инвестиции в оборудование</p>
+                    </div>
+                    <div class="stat-item">
+                        <h4>200-500 тыс. ₽</h4>
+                        <p>Паушальный взнос</p>
+                    </div>
+                </div>
+
+                <form class="lead-form" action="#" method="POST">
+                    <input type="text" name="website_url" style="display:none" tabindex="-1" autocomplete="off">
+                    
+                    <input type="text" name="name" placeholder="Ваше имя" required>
+                    <input type="tel" name="phone" placeholder="Телефон" required>
+                    <button type="submit">Получить финансовую модель</button>
+                    <span class="privacy-note">Нажимая кнопку, вы соглашаетесь с политикой обработки персональных данных</span>
+                </form>
+            </div>
+        </section>
+    </main>
 
     <footer>
-        <p>© 2026 BottleCraft. Сделано в России с любовью к природе и уюту.</p>
+        <p>© 2026 Masters of Life. Все права защищены.</p>
     </footer>
 
     <script>
-        // Скрипт для переключения "света"
-        const switchBtn = document.getElementById('lightSwitch');
-        const body = document.body;
-        const switchLabel = document.querySelector('.switch-label');
-
-        switchBtn.addEventListener('click', () => {
-            body.classList.toggle('light-on');
-            
-            if (body.classList.contains('light-on')) {
-                switchLabel.textContent = 'Выключить свет';
-            } else {
-                switchLabel.textContent = 'Включить уют';
-            }
+        const btn = document.getElementById('lightToggle');
+        btn.addEventListener('click', () => {
+            document.body.classList.toggle('lights-on');
+            btn.textContent = document.body.classList.contains('lights-on') ? 'Выключить свет' : 'Включить свет';
         });
     </script>
 </body>
