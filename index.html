@@ -3,46 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Masters of Life | Soulful Minimalism</title>
-    <meta name="description" content="Премиальные предметы интерьера. Апсайклинг винного стекла и точное столярное мастерство.">
+    <title>Masters of Life | Премиальный декор интерьера</title>
+    <meta name="description" content="Интерьер, который вызывает эмоции. Авторские светильники и тарелки из бутылок. Апсайклинг винного стекла и точное столярное мастерство.">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            /* Цветовая палитра: Earthy & Atmospheric */
-            --color-bg-dark: #151a16; /* Глубокий графит с зеленым подтоном */
-            --color-sage: #3e4a3d; /* Приглушенный шалфей */
-            --color-sage-light: #5b6e59;
-            --color-amber: #d97a46; /* Терракота / Янтарный свет */
+            /* Палитра бренда: Sage, Terracotta Amber, Graphite */
+            --color-graphite: #1A1A1A;
+            --color-graphite-dark: #151a16; /* Глубокий графит с зеленым подтоном */
+            --color-olive: #5B6E45; /* Глубокий оливковый (стекло) */
+            --color-wood: #a67c52; /* Береза / Дерево */
+            --color-wood-light: #C19A6B; /* Тонкий шпон березы */
+            --color-amber: #d97a46; /* Янтарный свет / Терракота */
             --color-amber-glow: rgba(217, 122, 70, 0.4);
             --color-text: #eae7e0; /* Теплый белый (бумага) */
             --color-text-muted: #9aa099;
+            
+            /* Текстуры: Tactile Grain */
+            --texture-grain: url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noise)"/></svg>');
             
             /* Шрифты */
             --font-serif: 'Cormorant Garamond', serif;
             --font-sans: 'Montserrat', sans-serif;
             
-            --transition: 0.6s cubic-bezier(0.25, 1, 0.25, 1);
+            --transition: all 0.3s ease;
         }
 
+        /* Базовые стили и Mobile-first */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            background-color: var(--color-bg-dark);
+            background-color: var(--color-graphite);
             color: var(--color-text);
             font-family: var(--font-sans);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
             position: relative;
         }
 
-        /* Текстура: Tactile Grain (цифровой шум) */
+        /* Текстура: Tactile Grain */
         body::before {
             content: "";
             position: fixed;
@@ -50,59 +62,134 @@
             pointer-events: none;
             z-index: 9999;
             opacity: 0.04;
-            background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noise)"/></svg>');
+            background-image: var(--texture-grain);
         }
 
-        /* Хедер с эффектом матового стекла (Frosted glass) */
+        h1, h2, h3 {
+            font-family: var(--font-serif);
+            font-weight: 400;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Кнопки (min 48px для доступности) */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 48px;
+            padding: 12px 32px;
+            background-color: var(--color-olive);
+            color: #fff;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 4px;
+            border: 1px solid var(--color-olive);
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            color: var(--color-olive);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border-color: var(--color-wood);
+            color: var(--color-wood);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--color-wood);
+            color: var(--color-graphite);
+        }
+
+        /* Layout */
+        .container {
+            width: 100%;
+            padding: 0 20px;
+            margin: 0 auto;
+        }
+
+        section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 24px;
+            color: var(--color-wood);
+            text-align: center;
+        }
+
+        /* Header с эффектом матового стекла */
         header {
             position: fixed;
-            top: 0; width: 100%;
-            padding: 2rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 100;
-            background: rgba(21, 26, 22, 0.6);
+            top: 0;
+            width: 100%;
+            background: rgba(26, 26, 26, 0.6);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(234, 231, 224, 0.05);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            padding: 15px 0;
+        }
+
+        .header-inner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
         }
 
         .logo {
             font-family: var(--font-serif);
             font-size: 1.8rem;
-            text-transform: uppercase;
+            color: var(--color-wood);
+            font-weight: 700;
             letter-spacing: 2px;
-            color: var(--color-text);
-            text-decoration: none;
+            text-transform: uppercase;
         }
 
-        .nav-links a {
-            color: var(--color-text);
-            text-decoration: none;
-            margin-left: 2rem;
-            font-size: 0.85rem;
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        nav a {
+            font-size: 0.9rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            transition: color 0.3s;
+            min-height: 48px; /* Доступность тапов */
+            display: flex;
+            align-items: center;
         }
 
-        .nav-links a:hover {
+        nav a:hover {
             color: var(--color-amber);
         }
 
-        /* Hero Section */
+        /* Hero */
         .hero {
             min-height: 100vh;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 0 5%;
+            padding-top: 100px; /* Отступ под шапку */
+            background: radial-gradient(circle at center, var(--color-graphite-dark) 0%, var(--color-graphite) 100%);
             position: relative;
-            /* Легкое янтарное свечение на фоне */
-            background: radial-gradient(circle at 50% 40%, rgba(91, 110, 89, 0.2) 0%, transparent 60%);
         }
 
         /* Ритм слоев (Architectural lines) на фоне Hero */
@@ -121,25 +208,37 @@
         }
 
         .hero h1 {
-            font-family: var(--font-serif);
-            font-size: clamp(4rem, 10vw, 9rem);
-            font-weight: 400;
-            line-height: 0.9;
-            margin-bottom: 2rem;
-            letter-spacing: -2px;
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
         }
 
         .hero h1 span {
             font-style: italic;
-            color: var(--color-sage-light);
+            color: var(--color-amber);
         }
 
         .hero p {
             font-size: 1.1rem;
-            max-width: 500px;
             color: var(--color-text-muted);
-            font-weight: 300;
-            line-height: 1.6;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Grid Layouts для секций */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        /* Специфичные блоки */
+        .about-text {
+            font-size: 1.1rem;
+            color: var(--color-text-muted);
         }
 
         /* Сетка продуктов (Soft Geometry: Арки) */
@@ -160,7 +259,7 @@
             border-radius: 200px 200px 10px 10px;
             overflow: hidden;
             aspect-ratio: 3 / 4;
-            background: var(--color-sage);
+            background: var(--color-graphite-dark);
             isolation: isolate;
         }
 
@@ -187,7 +286,7 @@
             position: absolute;
             bottom: 0; left: 0; right: 0;
             padding: 3rem 2rem 2rem;
-            background: linear-gradient(to top, var(--color-bg-dark) 0%, transparent 100%);
+            background: linear-gradient(to top, var(--color-graphite-dark) 0%, transparent 100%);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -225,57 +324,277 @@
             color: var(--color-amber);
         }
 
-        /* Адаптив */
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .portfolio { grid-template-columns: 1fr; gap: 2rem; padding: 5vh 5%; }
-            .arch-card { border-radius: 150px 150px 10px 10px; }
-            .card-content { transform: translateY(0); opacity: 1; background: linear-gradient(to top, rgba(21, 26, 22, 0.9) 0%, transparent 100%); }
+        /* Франшиза */
+        .franchise-block {
+            background: linear-gradient(135deg, var(--color-graphite-dark) 0%, var(--color-graphite) 100%);
+            padding: 40px 20px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid var(--color-wood);
+            position: relative;
+        }
+
+        /* Паттерн лазерной резки внутри блока франшизы */
+        .franchise-block::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: repeating-linear-gradient(
+                90deg,
+                transparent,
+                transparent 40px,
+                rgba(166, 124, 82, 0.05) 40px,
+                rgba(166, 124, 82, 0.05) 41px
+            );
+            z-index: -1;
+        }
+
+        .stats {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .stat-item h3 {
+            font-size: 1.8rem;
+            color: var(--color-olive);
+            margin-bottom: 5px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #111;
+            padding: 60px 0 30px;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            border-radius: 200px 200px 0 0; /* Форма перевернутой арки для динамики */
+        }
+
+        .footer-grid {
+            display: grid;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .map-container {
+            height: 250px;
+            background-color: #222;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-text-muted);
+        }
+
+        .copyright {
+            font-size: 0.8rem;
+            color: #666;
+            margin-top: 20px;
+        }
+
+        /* Desktop Breakpoint */
+        @media (min-width: 768px) {
+            .container {
+                max-width: 1200px;
+                padding: 0 40px;
+            }
+
+            section {
+                padding: 100px 0;
+            }
+
+            .header-inner {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+
+            .hero h1 {
+                font-size: 4rem;
+            }
+
+            .hero p {
+                font-size: 1.25rem;
+            }
+
+            .grid-2 {
+                grid-template-columns: 1fr 1fr;
+                gap: 60px;
+            }
+
+            .stats {
+                flex-direction: row;
+                justify-content: center;
+                gap: 60px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                text-align: left;
+            }
         }
     </style>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://mastersoflife.ru/#organization",
+          "name": "Masters of Life",
+          "url": "https://mastersoflife.ru",
+          "logo": "https://mastersoflife.ru/logo.png",
+          "description": "Премиальные предметы интерьера из переработанных материалов."
+        },
+        {
+          "@type": "Product",
+          "name": "Интерьерные тарелки Masters of Life",
+          "description": "Эстетичные интерьерные тарелки из расплющенных винных бутылок, созданные методом фьюзинга.",
+          "brand": {
+            "@type": "Brand",
+            "name": "Masters of Life"
+          }
+        },
+        {
+          "@type": "Product",
+          "name": "Дизайнерский светильник Masters of Life",
+          "description": "Светильник из 84 слоев березового шпона и оливкового стекла винной бутылки XVII века.",
+          "brand": {
+            "@type": "Brand",
+            "name": "Masters of Life"
+          }
+        },
+        {
+          "@type": "Service",
+          "name": "Франшиза производства Masters of Life",
+          "provider": {
+            "@id": "https://mastersoflife.ru/#organization"
+          },
+          "description": "Бизнес-модель и франшиза серийного производства дизайнерских предметов интерьера. Инвестиции от 390 000 руб."
+        }
+      ]
+    }
+    </script>
 </head>
 <body>
 
     <header>
-        <a href="#" class="logo">Masters of Life</a>
-        <nav class="nav-links">
-            <a href="#collection">Коллекция</a>
-            <a href="#about">О бренде</a>
-            <a href="#franchise">Франшиза</a>
-        </nav>
+        <div class="container header-inner">
+            <a href="#" class="logo">Masters of Life</a>
+            <nav>
+                <a href="#about">О нас</a>
+                <a href="#plates">Тарелки</a>
+                <a href="#lamps">Светильники</a>
+                <a href="#franchise">Франшиза</a>
+                <a href="#contacts">Контакты</a>
+            </nav>
+        </div>
     </header>
 
-    <section class="hero">
-        <h1>Warm <span>Minimalism</span></h1>
-        <p>Архитектура света. Мы соединяем 84 слоя березового шпона и переработанное стекло, создавая предметы с глубоким культурным кодом.</p>
-    </section>
-
-    <section class="portfolio" id="collection">
+    <main>
         
-        <a href="#" class="arch-card">
-            <img src="photo_2026-03-03 18.05.18.jpeg" alt="Лампа Amber Glow">
-            <div class="card-content">
-                <h2 class="card-title">Светильники</h2>
-                <span class="card-subtitle">Атмосферный свет</span>
+        <section id="hero" class="hero">
+            <div class="container">
+                <h1>Интерьер, который<br>вызывает <span>эмоции</span>.</h1>
+                <p>Предметы с характером. Дизайнерский апсайклинг, объединяющий эстетику минимализма и философию осознанного потребления.</p>
+                <a href="#collection" class="btn">Смотреть коллекцию</a>
             </div>
-        </a>
+        </section>
 
-        <a href="#" class="arch-card">
-            <img src="вар 3.jpg" alt="Интерьерные тарелки">
-            <div class="card-content">
-                <h2 class="card-title">Сервировка</h2>
-                <span class="card-subtitle">Искусство фьюзинга</span>
+        <section id="about">
+            <div class="container grid-2">
+                <div class="about-image">
+                    <div style="aspect-ratio: 4/3; background: var(--color-graphite-dark); border-radius: 8px; display:flex; align-items:center; justify-content:center; color: var(--color-text-muted);">
+                        [Фото: Процесс работы со стеклом]
+                    </div>
+                </div>
+                <div class="about-text">
+                    <h2 class="section-title">Манифест формы</h2>
+                    <p>Как мы начали расплющивать винные бутылки? Наш путь начался с ручного ремесла и одной идеи — дать стеклу вторую жизнь, сохранив его благородство.</p>
+                    <br>
+                    <p>Сегодня Masters of Life — это высокотехнологичное серийное производство. Мы стандартизировали процессы, чтобы каждый предмет сохранял свою уникальность, но отвечал строгим критериям премиального качества.</p>
+                </div>
             </div>
-        </a>
+        </section>
 
-        <a href="#" class="arch-card" style="border-radius: 10px 10px 200px 200px;"> <img src="photo_2026-03-03 18.05.07.jpeg" alt="Производство Masters of Life">
-            <div class="card-content" style="bottom: auto; top: 0; background: linear-gradient(to bottom, var(--color-bg-dark) 0%, transparent 100%);">
-                <h2 class="card-title">Франшиза</h2>
-                <span class="card-subtitle">Технологичное ремесло</span>
+        <section id="collection" class="portfolio">
+            
+            <a href="#" class="arch-card">
+                <img src="photo_2026-03-03 18.05.18.jpeg" alt="Лампа Amber Glow">
+                <div class="card-content">
+                    <h3 class="card-title">Светильники</h3>
+                    <span class="card-subtitle">Атмосферный свет</span>
+                </div>
+            </a>
+
+            <a href="#" class="arch-card">
+                <img src="вар 3.jpg" alt="НАБОР ИЗ 3 ТАРЕЛОК БУТЫЛКИ">
+                <div class="card-content">
+                    <h3 class="card-title">Сервировка</h3>
+                    <span class="card-subtitle">Искусство фьюзинга</span>
+                </div>
+            </a>
+
+            <a href="#" class="arch-card" style="border-radius: 10px 10px 200px 200px;"> <img src="photo_2026-03-03 18.05.07.jpeg" alt="Производство Masters of Life">
+                <div class="card-content" style="bottom: auto; top: 0; background: linear-gradient(to bottom, var(--color-graphite-dark) 0%, transparent 100%);">
+                    <h3 class="card-title">Франшиза</h3>
+                    <span class="card-subtitle">Технологичное ремесло</span>
+                </div>
+            </a>
+
+        </section>
+
+        <section id="franchise">
+            <div class="container">
+                <div class="franchise-block">
+                    <h2 class="section-title" style="color: var(--color-text);">Франшиза производства</h2>
+                    <p style="max-width: 700px; margin: 0 auto; color: var(--color-text-muted);">
+                        Откройте собственное высокомаржинальное производство. Masters of Life предлагает не просто бренд, а отлаженную технологию масштабируемого ремесла.
+                    </p>
+                    
+                    <div class="stats">
+                        <div class="stat-item">
+                            <h3>от 390 000 ₽</h3>
+                            <p>Инвестиции в оборудование</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3>200-500 тыс. ₽</h3>
+                            <p>Паушальный взнос</p>
+                        </div>
+                    </div>
+
+                    <a href="#download-fin-model" class="btn btn-outline">Скачать финмодель</a>
+                </div>
             </div>
-        </a>
+        </section>
 
-    </section>
+    </main>
+
+    <footer id="contacts">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="logo" style="margin-bottom: 20px;">Masters of Life</div>
+                    <p style="color: var(--color-text-muted); margin-bottom: 10px;">Email: hello@mastersoflife.ru</p>
+                    <p style="color: var(--color-text-muted); margin-bottom: 20px;">Телефон: +7 (XXX) XXX-XX-XX</p>
+                    <div style="display: flex; gap: 15px;">
+                        <a href="#" style="color: var(--color-wood);">Telegram</a>
+                        <a href="#" style="color: var(--color-wood);">WhatsApp</a>
+                        <a href="#" style="color: var(--color-wood);">VK</a>
+                    </div>
+                </div>
+                <div class="map-container">
+                    [Интерактивная карта производства]
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2026 Masters of Life. Все права защищены.</p>
+                <p style="margin-top: 5px;"><a href="#privacy" style="text-decoration: underline;">Политика конфиденциальности</a></p>
+            </div>
+        </div>
+    </footer>
 
 </body>
 </html>
