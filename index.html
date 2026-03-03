@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BottleCraft | Тепло в каждой детали</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #121212;
+            --text-color: #eaeaea;
+            --text-muted: #a0a0a0;
+            --glow-color: transparent;
+            --accent-color: #d4a373;
+            --card-bg: #1e1e1e;
+            --transition-speed: 0.8s;
+        }
+
+        /* Состояние "Свет включен" */
+        body.light-on {
+            --bg-color: #24180d; /* Теплый темный оттенок */
+            --glow-color: radial-gradient(circle, rgba(212,163,115,0.2) 0%, rgba(36,24,13,0) 70%);
+            --text-color: #fff9f2;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Montserrat', sans-serif;
+            transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 400;
+        }
+
+        header {
+            padding: 2rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            background: linear-gradient(to bottom, rgba(18,18,18,0.9), transparent);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* Главный экран (Hero) */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            background: var(--glow-color);
+            transition: background var(--transition-speed) ease;
+            padding: 0 5%;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            z-index: 2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin-bottom: 3rem;
+            z-index: 2;
+        }
+
+        /* Переключатель света */
+        .switch-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            z-index: 2;
+            cursor: pointer;
+        }
+
+        .switch-label {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .switch {
+            width: 60px;
+            height: 30px;
+            background-color: #333;
+            border-radius: 30px;
+            position: relative;
+            transition: background-color 0.4s;
+        }
+
+        .switch::after {
+            content: '';
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            width: 24px;
+            height: 24px;
+            background-color: #fff;
+            border-radius: 50%;
+            transition: transform 0.4s cubic-bezier(0.4, 0.0, 0.2, 1);
+        }
+
+        body.light-on .switch {
+            background-color: var(--accent-color);
+            box-shadow: 0 0 15px var(--accent-color);
+        }
+
+        body.light-on .switch::after {
+            transform: translateX(30px);
+        }
+
+        /* Секция продуктов */
+        .products {
+            padding: 5rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        /* Заглушки для твоих фото. Замени src на имена своих файлов! */
+        .card-img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-bottom: 1px solid #333;
+        }
+
+        .card-content {
+            padding: 2rem;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .price {
+            font-size: 1.25rem;
+            color: var(--accent-color);
+            font-weight: 500;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 5%;
+            border-top: 1px solid #333;
+            margin-top: 4rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">BottleCraft</div>
+        <div class="switch-container" id="lightSwitch">
+            <span class="switch-label">Включить уют</span>
+            <div class="switch"></div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1>Свет. Стекло. Атмосфера.</h1>
+        <p>Уникальные предметы интерьера из переработанных винных бутылок. Мы сохраняем форму, добавляя тепло и новую жизнь в каждую деталь.</p>
+    </section>
+
+    <section class="products">
+        <h2 class="section-title">Коллекция</h2>
+        
+        <div class="grid">
+            <div class="card">
+                <img src="photo_2026-03-03 18.05.18.jpeg" alt="Лампа из винной бутылки" class="card-img">
+                <div class="card-content">
+                    <h3 class="card-title">Лампа «Вечерний Свет»</h3>
+                    <p class="card-desc">Массивное стекло, скрывающее винтажную нить накаливания. Идеально для прикроватной тумбочки или уютных кухонных разговоров.</p>
+                    <div class="price">От 3 500 ₽</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="вар 3.jpg" alt="Сервировочные тарелки из бутылок" class="card-img">
+                <div class="card-content">
+                    <h3 class="card-title">Набор для сервировки</h3>
+                    <p class="card-desc">Расплавленные винные бутылки, превратившиеся в стильные менажницы для сыра, закусок и фруктов. Подарочная упаковка включена.</p>
+                    <div class="price">От 2 800 ₽</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="photo_2026-03-03 18.05.12.jpeg" alt="Лампа для романтического ужина" class="card-img">
+                <div class="card-content">
+                    <h3 class="card-title">Лампа «Праздничная»</h3>
+                    <p class="card-desc">Декор, который делает любой ужин особенным. Эффектно смотрится в сервировке праздничного стола.</p>
+                    <div class="price">От 4 000 ₽</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 BottleCraft. Сделано в России с любовью к природе и уюту.</p>
+    </footer>
+
+    <script>
+        // Скрипт для переключения "света"
+        const switchBtn = document.getElementById('lightSwitch');
+        const body = document.body;
+        const switchLabel = document.querySelector('.switch-label');
+
+        switchBtn.addEventListener('click', () => {
+            body.classList.toggle('light-on');
+            
+            if (body.classList.contains('light-on')) {
+                switchLabel.textContent = 'Выключить свет';
+            } else {
+                switchLabel.textContent = 'Включить уют';
+            }
+        });
+    </script>
+</body>
+</html>
