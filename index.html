@@ -3,300 +3,583 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Masters of Life | Авторские предметы интерьера</title>
-    <meta name="description" content="Интерьер, который вызывает эмоции. Дизайнерские светильники и тарелки из переработанных винных бутылок. Закажите декор или откройте производство по франшизе.">
+    <title>Masters of Life | Уникальный свет из переработанных бутылок</title>
+    <meta name="description" content="Лампы и тарелки из расплавленных винных бутылок. Уют, который стоит дорого. Сделано в России.">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     
     <style>
-        /* Цветовая палитра из ТЗ */
+        /* ОСНОВНЫЕ СТИЛИ И ЦВЕТА */
         :root {
-            --color-graphite: #2b2b2b;
-            --color-graphite-dark: #1a1a1a;
-            --color-olive: #4a5d23;
-            --color-olive-light: #6b8436;
-            --color-wood: #a67c52;
-            --color-text: #f0f0f0;
-            --color-text-muted: #b0b0b0;
-            --glow: transparent;
-            --transition: 0.5s ease;
+            /* Фон - цвет зеленой винной бутылки */
+            --bg-color: #0b2512; 
+            /* Основной текст - светлый, для контраста */
+            --text-color: #f1f1f1; 
+            /* Тёплое оранжевое свечение (акцент) */
+            --accent-color: #ff9f43; 
+            /* Тёмный, для гридов и более тёмных элементов */
+            --dark-color: #081a0d; 
+            /* Деревянный акцент (как на фото) */
+            --wood-color: #a67c52; 
+            
+            --main-font: 'Montserrat', sans-serif;
+            --heading-font: 'Playfair Display', serif;
         }
 
-        /* Состояние включенного света */
-        body.lights-on {
-            --color-graphite-dark: #241d18;
-            --color-graphite: #362c25;
-            --glow: radial-gradient(circle at 50% 30%, rgba(166, 124, 82, 0.15) 0%, rgba(26, 26, 26, 0) 60%);
-            --color-text: #fffdfa;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        html { scroll-behavior: smooth; }
 
         body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: var(--color-graphite-dark);
-            color: var(--color-text);
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--main-font);
             line-height: 1.6;
-            transition: background-color var(--transition);
+            overflow-x: hidden;
         }
 
-        h1, h2, h3 { font-family: 'Playfair Display', serif; }
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
 
-        /* Навигация */
+        ul {
+            list-style: none;
+        }
+
+        /* ХЕДЕР */
         header {
             position: fixed;
-            top: 0; width: 100%;
-            background: rgba(26, 26, 26, 0.95);
-            backdrop-filter: blur(10px);
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(11, 37, 18, 0.9);
+            padding: 1.5rem 0;
             z-index: 1000;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            justify-content: center;
         }
 
-        .nav-container {
+        .header-content {
+            width: 90%;
             max-width: 1200px;
-            margin: 0 auto;
-            padding: 1rem 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .logo { font-size: 1.5rem; font-weight: 600; letter-spacing: 1px; color: var(--color-wood); text-decoration: none;}
-
-        .nav-links { display: flex; gap: 2rem; align-items: center; }
-        .nav-links a { color: var(--color-text); text-decoration: none; font-size: 0.9rem; transition: color 0.3s; padding: 10px 0; }
-        .nav-links a:hover { color: var(--color-wood); }
-
-        /* Переключатель света */
-        .switch-btn {
-            background: transparent;
-            border: 1px solid var(--color-wood);
-            color: var(--color-wood);
-            padding: 10px 20px;
-            border-radius: 25px;
-            cursor: pointer;
-            font-family: inherit;
-            min-height: 48px; /* Требование ТЗ для кликабельности */
-            transition: all 0.3s;
-        }
-        body.lights-on .switch-btn {
-            background: var(--color-wood);
-            color: #fff;
-            box-shadow: 0 0 15px rgba(166, 124, 82, 0.4);
+        .logo {
+            font-family: var(--heading-font);
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
         }
 
-        /* Главный экран */
-        .hero {
-            height: 100vh;
+        .nav-links {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 0 5%;
-            background: var(--glow);
-            position: relative;
-            margin-top: 60px;
-        }
-        .hero h1 { font-size: 4vw; margin-bottom: 1rem; line-height: 1.2; }
-        .hero p { font-size: 1.2rem; max-width: 600px; margin: 0 auto; color: var(--color-text-muted); }
-
-        /* Секции */
-        section { padding: 5rem 5%; max-width: 1200px; margin: 0 auto; }
-        .section-title { font-size: 2.5rem; margin-bottom: 3rem; text-align: center; color: var(--color-wood); }
-
-        /* О нас */
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-            background: var(--color-graphite);
-            padding: 3rem;
-            border-radius: 12px;
-            border-left: 4px solid var(--color-olive);
-        }
-
-        /* Карточки товаров */
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2rem;
         }
 
-        .product-card {
-            background: var(--color-graphite);
-            border-radius: 8px;
-            overflow: hidden;
-            transition: transform 0.3s;
+        .nav-links a:hover {
+            color: var(--accent-color);
         }
-        .product-card:hover { transform: translateY(-5px); }
-        .product-card img { width: 100%; height: 350px; object-fit: cover; border-bottom: 2px solid var(--color-olive); }
-        .product-info { padding: 2rem; }
-        .product-title { font-size: 1.5rem; margin-bottom: 0.5rem; }
-        .product-desc { color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 1.5rem; }
-        .product-price { font-weight: 600; font-size: 1.2rem; color: var(--color-wood); }
 
-        /* Франшиза */
-        .franchise-block {
-            background: linear-gradient(135deg, var(--color-graphite) 0%, var(--color-graphite-dark) 100%);
-            padding: 4rem;
-            border-radius: 12px;
-            text-align: center;
-            border: 1px solid rgba(255,255,255,0.05);
+        /* ХЕРО-БЛОК (ГЛАВНАЯ) */
+        .hero {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: radial-gradient(circle, var(--accent-color) 0%, rgba(11, 37, 18, 0) 60%);
+            padding-top: 80px; /* Учитываем фиксированный хедер */
         }
-        .franchise-stats { display: flex; justify-content: center; gap: 3rem; margin: 2rem 0; flex-wrap: wrap; }
-        .stat-item h4 { font-size: 2rem; color: var(--color-olive-light); }
-        
-        /* Форма */
-        .lead-form { max-width: 400px; margin: 0 auto; display: flex; flex-direction: column; gap: 1rem; }
-        .lead-form input {
-            padding: 15px;
-            border-radius: 4px;
-            border: 1px solid #444;
-            background: rgba(255,255,255,0.05);
-            color: #fff;
-            font-family: inherit;
-            min-height: 48px;
+
+        .hero-content {
+            width: 90%;
+            max-width: 1200px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 2rem;
         }
-        .lead-form button {
-            background: var(--color-olive);
-            color: white;
-            border: none;
-            padding: 15px;
-            border-radius: 4px;
+
+        .hero-text {
+            text-align: left;
+        }
+
+        .hero h1 {
+            font-family: var(--heading-font);
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero h1 span {
+            color: var(--accent-color);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+            opacity: 0.8;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--dark-color);
+            padding: 0.8rem 1.5rem;
+            font-weight: 700;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #ffb86e;
+        }
+
+        /* ИНТЕРАКТИВНЫЙ ВКЛЮЧАТЕЛЬ/ВЫКЛЮЧАТЕЛЬ */
+        .hero-image {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lamp-photo {
+            max-height: 80vh;
+            filter: drop-shadow(0 0 20px var(--accent-color));
+        }
+
+        .lamp-toggle-container {
+            position: absolute;
+            bottom: 2rem;
+            right: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
             cursor: pointer;
-            font-weight: 600;
-            min-height: 48px;
-            transition: background 0.3s;
         }
-        .lead-form button:hover { background: var(--color-olive-light); }
-        .privacy-note { font-size: 0.75rem; color: #888; }
 
-        footer { text-align: center; padding: 2rem; border-top: 1px solid #333; margin-top: 3rem; }
+        .lamp-toggle-text {
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
 
-        /* Мобильная адаптация */
-        @media (max-width: 768px) {
-            .nav-links { display: none; /* Для мобильных нужен бургер-меню, пока скрываем ссылки */ }
-            .hero h1 { font-size: 2.5rem; }
-            .about-grid { grid-template-columns: 1fr; padding: 2rem; }
-            .franchise-block { padding: 2rem 1rem; }
-            .franchise-stats { gap: 1.5rem; flex-direction: column; }
+        /* Стили для checkbox-переключателя */
+        .switch {
+          position: relative;
+          display: inline-block;
+          width: 50px;
+          height: 24px;
+        }
+
+        .switch input { 
+          opacity: 0;
+          width: 0;
+          height: 0;
+        }
+
+        .slider {
+          position: absolute;
+          cursor: pointer;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background-color: #555;
+          -webkit-transition: .4s;
+          transition: .4s;
+          border-radius: 34px;
+        }
+
+        .slider:before {
+          position: absolute;
+          content: "";
+          height: 18px;
+          width: 18px;
+          left: 3px;
+          bottom: 3px;
+          background-color: white;
+          -webkit-transition: .4s;
+          transition: .4s;
+          border-radius: 50%;
+        }
+
+        input:checked + .slider {
+          background-color: var(--accent-color);
+        }
+
+        input:focus + .slider {
+          box-shadow: 0 0 1px var(--accent-color);
+        }
+
+        input:checked + .slider:before {
+          -webkit-transform: translateX(26px);
+          -ms-transform: translateX(26px);
+          transform: translateX(26px);
+        }
+
+        /* ВКЛЮЧЕНИЕ СВЕТА В ЧЕКБОКСЕ */
+        #lamp-toggle:checked ~ .hero .hero-image .lamp-photo {
+            filter: drop-shadow(0 0 30px var(--accent-color));
+        }
+
+        #lamp-toggle:checked ~ .hero {
+            background: radial-gradient(circle, #ffb86e 0%, rgba(11, 37, 18, 0.1) 60%);
+        }
+
+        /* КОЛЛЕКЦИЯ */
+        .collection {
+            padding: 6rem 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .collection-content {
+            width: 90%;
+            max-width: 1200px;
+        }
+
+        .section-title {
+            font-family: var(--heading-font);
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .collection-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .collection-item {
+            background-color: var(--dark-color);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .collection-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .item-photo {
+            max-width: 100%;
+            max-height: 250px;
+            margin-bottom: 1.5rem;
+            object-fit: contain;
+        }
+
+        .item-title {
+            font-family: var(--heading-font);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .item-description {
+            font-size: 0.95rem;
+            opacity: 0.8;
+            margin-bottom: 1rem;
+        }
+
+        .item-price {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--accent-color);
+        }
+
+        /* ФРАНШИЗА / О НАС */
+        .about {
+            padding: 6rem 0;
+            background-color: var(--dark-color);
+            display: flex;
+            justify-content: center;
+        }
+
+        .about-content {
+            width: 90%;
+            max-width: 1200px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 4rem;
+        }
+
+        .about-text h2 {
+            font-family: var(--heading-font);
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+            opacity: 0.8;
+        }
+
+        .about-image img {
+            max-width: 100%;
+            border-radius: 10px;
+            filter: drop-shadow(0 0 15px rgba(166, 124, 82, 0.4));
+        }
+
+        /* КОНТАКТЫ */
+        .contact {
+            padding: 6rem 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .contact-content {
+            width: 90%;
+            max-width: 1200px;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-family: var(--heading-font);
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .form-and-map {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            text-align: left;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        label {
+            font-size: 0.9rem;
+            font-weight: 500;
+            opacity: 0.9;
+        }
+
+        input, textarea {
+            padding: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--main-font);
+            font-size: 1rem;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        .contact-form .btn {
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            align-self: flex-start;
+        }
+
+        .privacy {
+            font-size: 0.8rem;
+            opacity: 0.6;
+            margin-top: -1rem;
+        }
+
+        .map {
+            height: 100%;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        /* ФУТЕР */
+        footer {
+            padding: 3rem 0;
+            background-color: var(--dark-color);
+            text-align: center;
+            opacity: 0.7;
+        }
+
+        .footer-logo {
+            font-family: var(--heading-font);
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* АДАПТИВНОСТЬ */
+        @media (max-width: 900px) {
+            .hero-content, .collection-grid, .about-content, .form-and-map {
+                grid-template-columns: 1fr;
+            }
+
+            .hero, .collection, .about, .contact {
+                padding: 4rem 0;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
         }
     </style>
 </head>
-<body itemscope itemtype="https://schema.org/Organization">
+<body id="page-top" itemscope itemtype="https://schema.org/Organization">
+
+    <input type="checkbox" id="lamp-toggle" style="display: none;">
 
     <header>
-        <div class="nav-container">
-            <a href="#" class="logo" itemprop="name">Masters of Life</a>
+        <div class="header-content">
+            <a href="#page-top" class="logo" itemprop="name">Masters of Life</a>
             <nav class="nav-links">
-                <a href="#about">О нас</a>
-                <a href="#plates">Тарелки</a>
-                <a href="#lamps">Светильники</a>
-                <a href="#franchise">Франшиза</a>
-                <button class="switch-btn" id="lightToggle">Включить свет</button>
+                <a href="#collection">Коллекция</a>
+                <a href="#about">Франшиза</a>
+                <a href="#contact">Контакты</a>
             </nav>
         </div>
     </header>
 
-    <main>
-        <section class="hero" id="hero">
-            <div>
-                <h1>Интерьер, который<br>вызывает эмоции</h1>
-                <p>Предметы с характером. Авторские светильники и тарелки ручной работы из переработанных материалов.</p>
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Интерьер,<br>который вызывает <span>эмоции</span>.</h1>
+                <p itemprop="description">Лампы и тарелки из расплавленных винных бутылок. Уют, который стоит дорого. Сделано в России.</p>
+                <a href="#collection" class="btn">СМОТРЕТЬ КОЛЛЕКЦИЮ</a>
             </div>
-        </section>
-
-        <section id="about">
-            <div class="about-grid">
-                <div>
-                    <h2 class="section-title" style="text-align: left; margin-bottom: 1rem;">О бренде</h2>
-                    <p>С 2023 года мы прошли путь от штучной ремесленной работы до выверенного серийного производства. Masters of Life — это манифест осознанного потребления, воплощенный в эстетике лофта и натуральных материалов. Мы не просто перерабатываем стекло, мы создаем культурный код вашего интерьера.</p>
+            <div class="hero-image">
+                <img src="photo_2026-03-03 18.05.07.jpeg" alt="Лампа из винной бутылки" class="lamp-photo">
+                <div class="lamp-toggle-container">
+                    <span class="lamp-toggle-text">Включить уют</span>
+                    <label class="switch">
+                        <input type="checkbox" id="lamp-switch">
+                        <span class="slider"></span>
+                    </label>
                 </div>
-                <div>
-                    <img src="photo_2026-03-03 18.05.07.jpeg" alt="Процесс создания предметов Masters of Life" style="width: 100%; border-radius: 8px;">
-                </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="plates">
-            <h2 class="section-title">Искусство апсайклинга</h2>
-            <div class="products-grid">
-                <article class="product-card" itemscope itemtype="https://schema.org/Product">
-                    <img src="вар 3.jpg" alt="Интерьерные тарелки из винных бутылок" itemprop="image">
-                    <div class="product-info">
-                        <h3 class="product-title" itemprop="name">Интерьерные тарелки</h3>
-                        <p class="product-desc" itemprop="description">Знакомая форма в новом прочтении. Менажницы и сервировочные блюда, созданные методом фьюзинга. Идеально для ресторанов и корпоративных подарков.</p>
-                        <div class="product-price">от <span itemprop="price">2 250</span> ₽</div>
-                    </div>
-                </article>
-            </div>
-        </section>
-
-        <section id="lamps">
-            <h2 class="section-title">Свет и фактура</h2>
-            <div class="products-grid">
-                <article class="product-card" itemscope itemtype="https://schema.org/Product">
-                    <img src="photo_2026-03-03 18.05.18.jpeg" alt="Светильник из шпона и бутылки" itemprop="image">
-                    <div class="product-info">
-                        <h3 class="product-title" itemprop="name">Дизайнерские светильники</h3>
-                        <p class="product-desc" itemprop="description">84 слоя березового шпона, монолитная конструкция и оливковое стекло. Теплый спектр света, раскрывающий культурный код винной бутылки XVII века.</p>
-                        <div class="product-price">Под заказ</div>
-                    </div>
-                </article>
+    <section class="collection" id="collection">
+        <div class="collection-content">
+            <h2 class="section-title">НАША КОЛЛЕКЦИЯ</h2>
+            <div class="collection-grid">
                 
-                <article class="product-card" itemscope itemtype="https://schema.org/Product">
-                    <img src="photo_2026-03-03 18.05.12.jpeg" alt="Настольная лампа Masters of Life" itemprop="image">
-                    <div class="product-info">
-                        <h3 class="product-title" itemprop="name">Лампа Accent</h3>
-                        <p class="product-desc" itemprop="description">Акцентное освещение для премиум-интерьеров. Строгая геометрия дерева и мягкий свет расплавленного стекла.</p>
-                        <div class="product-price">Под заказ</div>
+                <article class="collection-item" itemscope itemtype="https://schema.org/Product">
+                    <img src="photo_2026-03-03 18.05.18.jpeg" alt="Лампа Amber Glow" class="item-photo" itemprop="image">
+                    <div>
+                        <h3 class="item-title" itemprop="name">Лампа "Amber Glow"</h3>
+                        <p class="item-description" itemprop="description">Настольная лампа из расплавленной бутылки на деревянной основе. Тёплое, уютное свечение.</p>
+                        <p class="item-price" itemprop="offers" itemscope itemtype="https://schema.org/Offer">Цена: <span itemprop="price">3990</span> ₽.</p>
                     </div>
                 </article>
+
+                <article class="collection-item" itemscope itemtype="https://schema.org/Product">
+                    <img src="вар 3.jpg" alt="НАБОР ИЗ 3 ТАРЕЛОК БУТЫЛКИ" class="item-photo" itemprop="image">
+                    <div>
+                        <h3 class="item-title" itemprop="name">НАБОР ИЗ 3 ТАРЕЛОК</h3>
+                        <p class="item-description" itemprop="description">Уникальные сервировочные тарелки в форме бутылок. Отличный подарок.</p>
+                        <p class="item-price" itemprop="offers" itemscope itemtype="https://schema.org/Offer">Цена: <span itemprop="price">2250</span> ₽.</p>
+                    </div>
+                </article>
+
+                <article class="collection-item" itemscope itemtype="https://schema.org/Product">
+                    <img src="photo_2026-03-03 18.05.12.jpeg" alt="Настольная лампа" class="item-photo" itemprop="image">
+                    <div>
+                        <h3 class="item-title" itemprop="name">Настольная лампа</h3>
+                        <p class="item-description" itemprop="description">Компактная лампа с геометрическим узором. Стильный акцент.</p>
+                        <p class="item-price" itemprop="offers" itemscope itemtype="https://schema.org/Offer">Цена: <span itemprop="price">2800</span> ₽.</p>
+                    </div>
+                </article>
+
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="franchise" itemscope itemtype="https://schema.org/Service">
-            <div class="franchise-block">
-                <h2 class="section-title" style="margin-bottom: 1rem;" itemprop="name">Масштабируемое ремесло</h2>
-                <p style="margin-bottom: 2rem;">Откройте собственное производство по технологии "безупречного результата". Мы передаем чертежи, обучаем фьюзингу и помогаем с запуском.</p>
-                
-                <div class="franchise-stats">
-                    <div class="stat-item">
-                        <h4>от 390 тыс. ₽</h4>
-                        <p>Инвестиции в оборудование</p>
-                    </div>
-                    <div class="stat-item">
-                        <h4>200-500 тыс. ₽</h4>
-                        <p>Паушальный взнос</p>
-                    </div>
-                </div>
+    <section class="about" id="about">
+        <div class="about-content">
+            <div class="about-text">
+                <h2>Франшиза производства<br>предметов интерьера.</h2>
+                <p>Откройте своё производство уникальных предметов из переработанных бутылок. Мы передаём технологии, чертежи для лазера и обучаем фьюзингу. Инвестиции от 390 000 ₽. Масштабируемое ремесло.</p>
+                <a href="#contact" class="btn">ПОЛУЧИТЬ ФИНАНСОВУЮ МОДЕЛЬ</a>
+            </div>
+            <div class="about-image">
+                <img src="Snimok_ekrana_2026-03-03_v_18.14.40.png" alt="Процесс производства" itemprop="image">
+            </div>
+        </div>
+    </section>
 
-                <form class="lead-form" action="#" method="POST">
-                    <input type="text" name="website_url" style="display:none" tabindex="-1" autocomplete="off">
-                    
-                    <input type="text" name="name" placeholder="Ваше имя" required>
-                    <input type="tel" name="phone" placeholder="Телефон" required>
-                    <button type="submit">Получить финансовую модель</button>
-                    <span class="privacy-note">Нажимая кнопку, вы соглашаетесь с политикой обработки персональных данных</span>
+    <section class="contact" id="contact">
+        <div class="contact-content">
+            <h2 class="section-title">СВЯЖИТЕСЬ С НАМИ</h2>
+            <div class="form-and-map">
+                <form class="contact-form" action="#" method="post">
+                    <div class="form-group">
+                        <label for="name">Ваше имя *</label>
+                        <input type="text" id="name" name="name" placeholder="Иван Иванов" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Телефон/Email *</label>
+                        <input type="text" id="email" name="email" placeholder="+79123456789 или email@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Сообщение</label>
+                        <textarea id="message" name="message" rows="5" placeholder="Я хочу заказать лампу..." required></textarea>
+                    </div>
+                    <p class="privacy">Нажимая кнопку, вы соглашаетесь на обработку персональных данных.</p>
+                    <button type="submit" class="btn">ОТПРАВИТЬ</button>
                 </form>
+                <div class="map">
+                    <div style="width: 100%; height: 100%; background-color: var(--dark-color); display: flex; justify-content: center; align-items: center; color: #555;">
+                        <span>Здесь будет карта (локальное SEO)</span>
+                    </div>
+                </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
     <footer>
-        <p>© 2026 Masters of Life. Все права защищены.</p>
+        <div class="footer-logo">Masters of Life</div>
+        <p>&copy; 2026. Все права защищены.</p>
     </footer>
 
     <script>
-        const btn = document.getElementById('lightToggle');
-        btn.addEventListener('click', () => {
-            document.body.classList.toggle('lights-on');
-            btn.textContent = document.body.classList.contains('lights-on') ? 'Выключить свет' : 'Включить свет';
+        const lampToggleInput = document.getElementById('lamp-toggle');
+        const lampSwitchInput = document.getElementById('lamp-switch');
+        
+        lampSwitchInput.addEventListener('change', () => {
+            lampToggleInput.checked = lampSwitchInput.checked;
+        });
+
+        lampToggleInput.addEventListener('change', () => {
+            lampSwitchInput.checked = lampToggleInput.checked;
         });
     </script>
 </body>
