@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Авторские сервировочные тарелки из винных бутылок: искусство апсайклинга</title>
+    <meta name="description" content="Подарочный набор из 3-х тарелок (винных бутылок). Дизайнерская посуда ручной работы для эстетики сервировки. Идеальный эко-подарок в стильной упаковке с сертификатом качества.">
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "Product",
+      "name": "Набор сервировочных тарелок из бутылок (3 шт.)",
+      "image": [
+        "https://mastersoflife.ru/вар%203.jpg"
+       ],
+      "description": "Подарочный набор авторских сервировочных тарелок из расплавленных винных бутылок. Включает 2 тарелки с бортиком и 1 плоскую доску.",
+      "brand": {
+        "@type": "Brand",
+        "name": "Masters of Life"
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://mastersoflife.ru/plates.html",
+        "priceCurrency": "RUB",
+        "price": "2800",
+        "availability": "https://schema.org/InStock"
+      }
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #0d120e; 
+            --text-color: #e8e3d9; 
+            --accent-glow: #d97a46; 
+            --wood-dark: #2a2015;
+            --wood-light: #5c442e;
+            
+            --font-serif: 'Cormorant Garamond', serif;
+            --font-sans: 'Montserrat', sans-serif;
+            --font-heading: 'Tenor Sans', sans-serif;
+            --transition: 0.5s cubic-bezier(0.25, 1, 0.25, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--font-sans);
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Тактильный шум */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.05;
+            background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noise)"/></svg>');
+        }
+
+        /* Навигация */
+        header {
+            position: fixed;
+            top: 0; width: 100%;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: rgba(13, 18, 14, 0.6);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .logo {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-decoration: none;
+            color: var(--text-color);
+        }
+
+        .nav-links { display: flex; gap: 2rem; }
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color var(--transition);
+        }
+        .nav-links a:hover { color: var(--accent-glow); }
+
+        /* Блок товара */
+        .product-showcase {
+            padding: 20vh 5% 10vh;
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: start;
+        }
+
+        .left-column {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
+
+        .product-gallery {
+            position: relative;
+        }
+
+        .main-image {
+            width: 100%;
+            aspect-ratio: 4/5;
+            object-fit: cover;
+            border-radius: 8px; /* Убрали арку для строгости */
+            filter: brightness(0.9);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+
+        /* Характеристики под фото */
+        .specs-list {
+            list-style: none;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 1.5rem;
+        }
+
+        .specs-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            font-size: 0.95rem;
+        }
+
+        .specs-list span:first-child {
+            opacity: 0.9;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.8rem;
+        }
+
+        /* Правая колонка: Описание */
+        .product-details {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        .breadcrumb {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent-glow);
+            margin-bottom: 1.5rem;
+        }
+
+        .breadcrumb a {
+            color: var(--text-color);
+            text-decoration: none;
+            opacity: 0.6;
+            transition: opacity 0.3s;
+        }
+        .breadcrumb a:hover { opacity: 1; }
+
+        .product-title {
+            font-family: var(--font-heading);
+            font-size: 2.2rem;
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            line-height: 1.3;
+            margin-bottom: 1.5rem;
+            color: var(--accent-glow);
+        }
+
+        .product-price {
+            font-family: var(--font-sans);
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--text-color);
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        /* Форматирование типографики описания */
+        .product-description {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            opacity: 0.8;
+            margin-bottom: 3rem;
+            text-align: justify;
+            -webkit-hyphens: auto;
+            -moz-hyphens: auto;
+            -ms-hyphens: auto;
+            hyphens: auto;
+        }
+
+        .product-description p {
+            margin-bottom: 0;
+            text-indent: 1.5rem;
+        }
+
+        .product-description p:first-child {
+            text-indent: 0;
+        }
+
+        .btn-order {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1.2rem 3rem;
+            background: var(--accent-glow);
+            color: var(--bg-color);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 500;
+            border-radius: 4px;
+            transition: all var(--transition);
+            border: 1px solid var(--accent-glow);
+            width: max-content;
+        }
+
+        .btn-order:hover {
+            background: transparent;
+            color: var(--accent-glow);
+        }
+
+        /* Галерея и отзывы */
+        .bottom-section {
+            padding: 5vh 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            font-family: var(--font-heading);
+            font-size: 2.2rem;
+            color: var(--accent-glow);
+            margin-bottom: 3rem;
+            text-align: left;
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            font-weight: 400;
+        }
+
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 15px;
+        }
+
+        .grid-img {
+            width: 100%;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+            border-radius: 6px;
+            filter: grayscale(15%) brightness(0.8);
+            transition: all var(--transition);
+            cursor: pointer;
+        }
+
+        .grid-img:hover {
+            filter: grayscale(0%) brightness(1.1);
+            transform: scale(1.03);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+            z-index: 2;
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .review-img {
+            width: 100%;
+            aspect-ratio: 3/4;
+            object-fit: cover;
+            border-radius: 8px;
+            filter: brightness(0.85);
+            transition: all var(--transition);
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .review-img:hover {
+            filter: brightness(1.05);
+            transform: translateY(-5px);
+            border-color: rgba(217, 122, 70, 0.3);
+        }
+
+        /* Подвал */
+        footer {
+            padding: 10vh 5% 5vh;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            margin-top: 5vh;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-bottom: 4rem;
+        }
+
+        .contact-info { text-align: left; }
+        .contact-info h3 { font-family: var(--font-heading); font-size: 2.2rem; margin-bottom: 1.5rem; color: var(--accent-glow); letter-spacing: 6px; text-transform: uppercase;}
+        .contact-info p { margin-bottom: 2rem; opacity: 0.8; font-size: 1.1rem; }
+        .contact-info a { color: var(--text-color); text-decoration: none; margin-right: 1.5rem; transition: color 0.3s; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; }
+        .contact-info a:hover { color: var(--accent-glow); }
+
+        .map-placeholder {
+            width: 100%;
+            height: 350px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px dashed rgba(255, 255, 255, 0.15);
+            color: rgba(232, 227, 217, 0.5);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .copyright { text-align: center; font-size: 0.8rem; opacity: 0.5; }
+
+        @media (max-width: 900px) {
+            .product-showcase { grid-template-columns: 1fr; gap: 3rem; padding-top: 15vh; }
+            .photo-grid { grid-template-columns: repeat(2, 1fr); }
+            .reviews-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-grid { grid-template-columns: 1fr; gap: 3rem; }
+            .contact-info { text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo">Masters of Life</a>
+        <nav class="nav-links">
+            <a href="index.html#about">О нас</a>
+            <a href="index.html#collection">Коллекция</a>
+            <a href="index.html#franchise">Франшиза</a>
+            <a href="#contacts">Контакты</a>
+        </nav>
+    </header>
+
+    <main class="product-showcase">
+        
+        <div class="left-column">
+            <div class="product-gallery">
+                <img src="вар 3.jpg" alt="Сервировочные тарелки из винных бутылок с закусками" class="main-image"> </div>
+
+            <ul class="specs-list">
+                <li>
+                    <span>Комплектация</span>
+                    <span>3 шт (2 с бортиком, 1 плоская)</span>
+                </li>
+                <li>
+                    <span>Материал</span>
+                    <span>Вторичное стекло (upcycling)</span>
+                </li>
+                <li>
+                    <span>Технология</span>
+                    <span>Многоступенчатый обжиг при 800 °C</span>
+                </li>
+                <li>
+                    <span>Оформление</span>
+                    <span>Подарочная упаковка + сертификат</span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="product-details">
+            <div class="breadcrumb">
+                <a href="index.html">Главная</a> &nbsp;/&nbsp; Коллекция
+            </div>
+            
+            <h1 class="product-title">Набор тарелок<br>для сервировки</h1>
+            
+            <div class="product-price">
+                2 800 ₽
+            </div>
+            
+            <div class="product-description">
+                <p>Вы&nbsp;когда-нибудь задумывались о&nbsp;том, как привычная форма винной бутылки может трансформироваться в&nbsp;функциональный арт-объект? Мы&nbsp;переосмыслили технологию работы со&nbsp;стеклом, превратив процесс апсайклинга в&nbsp;высокоточное производство. Наши <strong>дизайнерские тарелки</strong>&nbsp;&mdash; это результат сложнейших экспериментов в&nbsp;печи, где стекло обретает новую плоскость, оставаясь &laquo;живым&raquo;.</p>
+                
+                <p>В&nbsp;этот подарочный набор входят три уникальных предмета: две тарелки с&nbsp;аккуратным бортиком (идеально для удержания сока свежих ягод или подачи классического капрезе) и&nbsp;одна <strong>сервировочная доска из&nbsp;стекла</strong> без бортов, созданная специально для нарезки сыров и&nbsp;брускетт. Это безупречный акцент для современного интерьера в&nbsp;<strong>скандинавском стиле</strong> и&nbsp;эстетике теплого минимализма.</p>
+                
+                <p>Каждое изделие&nbsp;&mdash; это <strong>авторская работа</strong> и&nbsp;наш экологический манифест (zero waste). Набор поставляется в&nbsp;премиальной красивой упаковке и&nbsp;строго сопровождается сертификатами качества. Это идеальный подарок для тех, кому важно не&nbsp;просто накрыть на&nbsp;стол, а&nbsp;придать моменту особый характер.</p>
+            </div>
+
+            <a href="#order" class="btn-order">Оформить заказ</a>
+        </div>
+    </main>
+
+    <section class="bottom-section">
+        <h2 class="section-header">В деталях</h2>
+        <div class="photo-grid">
+            <img src="вар 3.jpg" alt="Тарелки в сервировке 1" class="grid-img">
+            <img src="gallery-plate-2.jpg" alt="Упаковка набора тарелок" class="grid-img">
+            <img src="gallery-plate-3.jpg" alt="Деталь 3" class="grid-img">
+            <img src="gallery-plate-4.jpg" alt="Деталь 4" class="grid-img">
+            <img src="gallery-plate-5.jpg" alt="Деталь 5" class="grid-img">
+            <img src="gallery-plate-6.jpg" alt="Деталь 6" class="grid-img">
+            <img src="gallery-plate-7.jpg" alt="Деталь 7" class="grid-img">
+            <img src="gallery-plate-8.jpg" alt="Деталь 8" class="grid-img">
+            <img src="gallery-plate-9.jpg" alt="Деталь 9" class="grid-img">
+            <img src="gallery-plate-10.jpg" alt="Деталь 10" class="grid-img">
+        </div>
+    </section>
+
+    <section class="bottom-section">
+        <h2 class="section-header">Наши клиенты</h2>
+        <div class="reviews-grid">
+            <img src="review-1.jpg" alt="Отзыв клиента 1" class="review-img">
+            <img src="review-2.jpg" alt="Отзыв клиента 2" class="review-img">
+            <img src="review-3.jpg" alt="Отзыв клиента 3" class="review-img">
+            <img src="review-4.jpg" alt="Отзыв клиента 4" class="review-img">
+        </div>
+    </section>
+
+    <footer id="contacts">
+        <div class="footer-grid">
+            <div class="contact-info">
+                <h3>Свяжитесь с нами</h3>
+                <p>hello@mastersoflife.ru<br>+7 (999) 000-00-00</p>
+                <a href="#">Telegram</a>
+                <a href="#">WhatsApp</a>
+                <a href="#">Instagram</a>
+            </div>
+            <div class="map-placeholder">
+                Место для интерактивной карты
+            </div>
+        </div>
+        <p class="copyright">&copy; 2026 Masters of Life. Производство в России.</p>
+    </footer>
+
+</body>
+</html>
