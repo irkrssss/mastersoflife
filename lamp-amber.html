@@ -245,26 +245,26 @@
             text-indent: 0;
         }
 
-        .btn-order {
+    .btn-order {
             display: inline-flex;
             justify-content: center;
             align-items: center;
             padding: 1.2rem 3rem;
-            background: var(--bg-color);
-            color: var(--text-color) ); /* Белый текст на оранжевой кнопке */
+            background: var(--bg-color); /* Чёрный (тёмный) фон */
+            color: var(--accent-glow); /* Оранжевый текст */
             text-decoration: none;
             text-transform: uppercase;
             letter-spacing: 2px;
             font-weight: 550;
             border-radius: 4px;
             transition: all var(--transition);
-            border: 1px solid var(--accent-glow);
+            border: 1px solid var(--accent-glow); /* Оранжевая рамка */
             width: max-content;
         }
 
         .btn-order:hover {
-            background: transparent;
-            color: var(--text-color);
+            background: var(--accent-glow); /* Оранжевый фон при наведении */
+            color: var(--bg-color); /* Чёрный текст при наведении */
         }
 
         .bottom-section {
