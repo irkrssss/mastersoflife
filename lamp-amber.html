@@ -524,5 +524,56 @@
         <span class="lightbox-close" id="lightboxClose">&times;</span>
         <img src="" alt="Увеличенное изображение" class="lightbox-img" id="lightboxImg">
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const overlay = document.getElementById('lightboxOverlay');
+            const lightboxImg = document.getElementById('lightboxImg');
+            const closeBtn = document.getElementById('lightboxClose');
+            // Находим все картинки ТОЛЬКО в блоке "В деталях"
+            const galleryImages = document.querySelectorAll('.photo-grid .grid-img');
+
+            // Открытие окна при клике на фото
+            galleryImages.forEach(img => {
+                img.addEventListener('click', function() {
+                    const currentSrc = this.getAttribute('src');
+                    const currentAlt = this.getAttribute('alt');
+                    
+                    lightboxImg.setAttribute('src', currentSrc);
+                    lightboxImg.setAttribute('alt', currentAlt);
+                    
+                    overlay.classList.add('active');
+                    document.body.style.overflow = 'hidden'; // Блокируем скролл страницы
+                });
+            });
+
+            // Функция закрытия
+            function closeLightbox() {
+                overlay.classList.remove('active');
+                document.body.style.overflow = ''; // Возвращаем скролл
+                
+                // Очищаем src после анимации закрытия, чтобы при следующем открытии не моргала старая картинка
+                setTimeout(() => {
+                    lightboxImg.setAttribute('src', '');
+                }, 500);
+            }
+
+            // Закрытие при клике на крестик
+            closeBtn.addEventListener('click', closeLightbox);
+
+            // Закрытие при клике на темный фон (но не на саму картинку)
+            overlay.addEventListener('click', function(e) {
+                if (e.target !== lightboxImg) {
+                    closeLightbox();
+                }
+            });
+
+            // Закрытие при нажатии клавиши Esc
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && overlay.classList.contains('active')) {
+                    closeLightbox();
+                }
+            });
+        });
+    </script>
 </body>
 </html>
