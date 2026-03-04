@@ -105,7 +105,7 @@
             text-align: center;
             padding: 0 5%;
             
-            /* ИЗМЕНЕНО: Сверху градиент прозрачный, затемнение начинается ниже (с 40%) */
+            /* Градиент стал прозрачнее сверху и затемняется только к низу */
             background-image: 
                 linear-gradient(to bottom, rgba(13, 18, 14, 0) 0%, rgba(13, 18, 14, 0.1) 40%, rgba(13, 18, 14, 0.85) 100%),
                 url('cover.png');
@@ -114,18 +114,20 @@
             background-attachment: fixed;
         }
 
-       .massive-title {
+        .massive-title {
             font-family: var(--font-serif);
             font-size: clamp(3rem, 12vw, 10rem);
             font-weight: 400;
             line-height: 0.9;
-            /* ИЗМЕНЕНО: Сдвиг вправо (margin-left) и увеличен отступ снизу, чтобы оттолкнуть текст */
+            /* Сдвиг заголовка вправо и отступ снизу */
             margin-bottom: 3rem; 
             margin-left: 6vw; 
             text-transform: uppercase;
             letter-spacing: -2px;
             text-shadow: 0 10px 30px rgba(0,0,0,0.8);
         }
+
+        .massive-title span { color: var(--accent-glow); font-style: italic; }
 
         .hero p {
             font-size: 1.2rem;
@@ -134,7 +136,7 @@
             line-height: 1.6;
             opacity: 0.9;
             text-shadow: 0 2px 10px rgba(0,0,0,0.8);
-            /* ИЗМЕНЕНО: Дополнительный отступ сверху, чтобы текст ушел еще чуть ниже */
+            /* Опускаем мелкий текст чуть ниже */
             margin-top: 1rem; 
         }
 
