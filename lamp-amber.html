@@ -215,15 +215,26 @@
         }
 
         .product-description {
-            font-size: 1.05rem;
-            line-height: 1.8;
-            opacity: 0.8;
-            margin-bottom: 3rem;
-        }
-
+    font-size: 1.05rem;
+    line-height: 1.8;
+    opacity: 0.8;
+    margin-bottom: 3rem;
+    
+    /* Новые правила типографики */
+    text-align: justify; /* Выравнивание по ширине */
+    -webkit-hyphens: auto; /* Поддержка переносов для разных браузеров */
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+}
         .product-description p {
-            margin-bottom: 1.5rem;
-        }
+    margin-bottom: 0; /* Убираем интервалы между абзацами */
+    text-indent: 1.5rem; /* Классическая красная строка, так как убрали интервалы */
+}
+        /* Первый абзац традиционно печатается без красной строки */
+.product-description p:first-child {
+    text-indent: 0;
+}
 
         .btn-order {
             display: inline-flex;
