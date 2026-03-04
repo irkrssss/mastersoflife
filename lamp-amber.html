@@ -129,13 +129,14 @@
             position: relative;
         }
 
-        .main-image {
+.main-image {
             width: 80%; 
             display: block; 
             margin: 0 auto; 
             aspect-ratio: 4/5;
             object-fit: cover;
-            border-radius: 250px 250px 10px 10px; 
+            /* Единое плавное скругление для большого объекта */
+            border-radius: 16px; 
             filter: brightness(0.9);
             box-shadow: 0 20px 50px rgba(0,0,0,0.5);
         }
