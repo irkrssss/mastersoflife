@@ -130,14 +130,16 @@
             position: relative;
         }
 
-        .main-image {
-            width: 100%;
-            aspect-ratio: 4/5;
-            object-fit: cover;
-            border-radius: 250px 250px 10px 10px; 
-            filter: brightness(0.9);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-        }
+ .main-image {
+    width: 80%; /* Уменьшили со 100% до 80% */
+    display: block; /* Делаем блочным для центрирования */
+    margin: 0 auto; /* Центрируем по горизонтали */
+    aspect-ratio: 4/5;
+    object-fit: cover;
+    border-radius: 250px 250px 10px 10px; 
+    filter: brightness(0.9);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+}
 
         .product-gallery::before {
             content: '';
