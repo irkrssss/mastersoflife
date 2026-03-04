@@ -96,7 +96,6 @@
             transition: transform var(--transition);
         }
 
-        /* Герой-секция: более прозрачная тень */
         .hero {
             height: 100vh;
             display: flex;
@@ -191,21 +190,28 @@
             position: relative;
         }
 
-        .product-link:hover { transform: translateY(-10px); }
-
-        /* Изображения в коллекции: меньше и без рамки */
+        /* Изображения в коллекции: меньше, без арок */
         .product-media {
-            width: 75%;
+            width: 60%;
             margin: 0 auto;
             display: block;
             aspect-ratio: 4/5;
             object-fit: cover;
-            border-radius: 190px 190px 5px 5px;
+            border-radius: 8px; /* Обычное скругление вместо арки */
             filter: brightness(0.85);
-            transition: filter var(--transition);
+            transition: all var(--transition);
         }
 
-        .product-link:hover .product-media { filter: brightness(1.1); }
+        /* Анимация для лампы: загорается */
+        .lamp-card:hover .product-media { 
+            filter: brightness(1.25) drop-shadow(0 0 25px var(--accent-glow)); 
+        }
+
+        /* Анимация для тарелок: увеличиваются */
+        .plate-card:hover .product-media { 
+            transform: scale(1.05);
+            filter: brightness(1); 
+        }
 
         .product-info {
             padding: 2rem 0;
@@ -225,12 +231,11 @@
             color: var(--accent-glow);
         }
 
-        /* Франшиза: силуэт лежащей бутылки */
         .franchise-block {
             text-align: center;
             background: rgba(255,255,255,0.02);
             padding: 5rem 3rem;
-            border-radius: 20px 250px 250px 20px; /* Плоское дно слева, горлышко справа */
+            border-radius: 20px 250px 250px 20px;
             border: 1px solid rgba(255,255,255,0.05);
         }
 
@@ -251,7 +256,6 @@
 
         .btn:hover { background: var(--accent-glow); color: var(--bg-color); }
 
-        /* Контакты: сетка с местом под карту */
         footer {
             padding: 10vh 5% 5vh;
             border-top: 1px solid rgba(255,255,255,0.05);
@@ -295,6 +299,7 @@
             .franchise-block { border-radius: 20px 100px 100px 20px; padding: 3rem 1.5rem; }
             .contact-info { text-align: center; }
             .contact-info a { margin: 0 0.75rem; }
+            .product-media { width: 80%; }
         }
     </style>
 </head>
@@ -332,7 +337,7 @@
         <h2 class="section-header">Коллекция</h2>
         <div class="products-grid">
             
-            <a href="lamp-amber.html" class="product-link">
+            <a href="lamp-amber.html" class="product-link lamp-card">
                 <img src="lamp123.png" alt="Лампа Amber" class="product-media">
                 <div class="product-info">
                     <h3 class="product-title">Светильник Amber</h3>
@@ -340,7 +345,7 @@
                 </div>
             </a>
 
-            <a href="plates.html" class="product-link">
+            <a href="plates.html" class="product-link plate-card">
                 <img src="plate123.png" alt="Тарелки из бутылок" class="product-media">
                 <div class="product-info">
                     <h3 class="product-title">Набор для сервировки</h3>
