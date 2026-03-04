@@ -3,8 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Светильник Amber | Masters of Life</title>
     
+    <title>Параметрические светильники из дерева ручной работы: 84 слоя шпона и магия света.</title>
+    <meta name="description" content="Авторская работа: параметрический светильник Amber из 84 слоев березового шпона и винного стекла. Эко-дизайн в стиле теплый минимализм. Ручная сборка.">
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "Product",
+      "name": "Параметрический светильник Amber",
+      "image": [
+        "https://mastersoflife.ru/photo_2026-03-03_18.05.18.jpeg"
+       ],
+      "description": "Светильник из дерева ручной работы. Основа выполнена из 84 слоев березового шпона. Световая часть — расплавленное оливковое стекло винных бутылок.",
+      "brand": {
+        "@type": "Brand",
+        "name": "Masters of Life"
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://mastersoflife.ru/lamp-amber.html",
+        "priceCurrency": "RUB",
+        "price": "3990",
+        "availability": "https://schema.org/InStock"
+      }
+    }
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
@@ -39,7 +64,6 @@
             position: relative;
         }
 
-        /* Тактильный шум */
         body::before {
             content: "";
             position: fixed;
@@ -50,7 +74,6 @@
             background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noise)"/></svg>');
         }
 
-        /* Навигация */
         header {
             position: fixed;
             top: 0; width: 100%;
@@ -85,7 +108,6 @@
         }
         .nav-links a:hover { color: var(--accent-glow); }
 
-        /* Секция продукта */
         .product-showcase {
             padding: 20vh 5% 10vh;
             max-width: 1400px;
@@ -104,12 +126,11 @@
             width: 100%;
             aspect-ratio: 4/5;
             object-fit: cover;
-            border-radius: 250px 250px 10px 10px; /* Арка */
+            border-radius: 250px 250px 10px 10px; 
             filter: brightness(0.9);
             box-shadow: 0 20px 50px rgba(0,0,0,0.5);
         }
 
-        /* Янтарный отсвет за лампой */
         .product-gallery::before {
             content: '';
             position: absolute;
@@ -144,10 +165,11 @@
         }
         .breadcrumb a:hover { opacity: 1; }
 
+        /* H1 SEO оптимизирован  */
         .product-title {
             font-family: var(--font-serif);
-            font-size: clamp(3rem, 5vw, 4.5rem);
-            line-height: 1;
+            font-size: clamp(2.5rem, 4vw, 4rem);
+            line-height: 1.1;
             margin-bottom: 1.5rem;
         }
 
@@ -163,10 +185,14 @@
         }
 
         .product-description {
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             line-height: 1.8;
             opacity: 0.8;
-            margin-bottom: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .product-description p {
+            margin-bottom: 1rem;
         }
 
         .specs-list {
@@ -213,7 +239,6 @@
             color: var(--accent-glow);
         }
 
-        /* Дополнительные фото (Lifestyle) */
         .lifestyle-section {
             padding: 5vh 5% 15vh;
             max-width: 1400px;
@@ -231,7 +256,6 @@
             filter: grayscale(10%);
         }
 
-        /* Подвал */
         footer {
             padding: 10vh 5% 5vh;
             border-top: 1px solid rgba(255,255,255,0.05);
@@ -292,36 +316,43 @@
     <main class="product-showcase">
         
         <div class="product-gallery">
-            <img src="photo_2026-03-03 18.05.18.jpeg" alt="Светильник Amber на тумбочке" class="main-image">
-        </div>
+            <img src="photo_2026-03-03 18.05.18.jpeg" alt="Параметрический светильник из дерева ручной работы в интерьере" class="main-image"> </div>
 
         <div class="product-details">
             <div class="breadcrumb">
                 <a href="index.html">Главная</a> &nbsp;/&nbsp; Коллекция
             </div>
             
-            <h1 class="product-title">Светильник<br>Amber</h1>
+            <h1 class="product-title">Светильник из дерева ручной работы Amber</h1>
             
             <div class="product-price">
                 3 990 ₽
             </div>
             
-            <p class="product-description">
-                Монолитная конструкция из 84 слоев отборного березового шпона, скрывающая в себе историю. Проходя сквозь толщу переработанного оливкового стекла, свет приобретает теплый, уютный спектр, создавая неповторимую атмосферу в вашем интерьере.
-            </p>
+            <div class="product-description">
+                <p>Свет — это самый мощный инструмент трансформации пространства. Наш светильник стал логичным продолжением работы с образом винной бутылки — культурным кодом, сформировавшимся еще в XVII веке. Мы создали деревянную основу, которая повторяет эту выверенную временем форму, но делает ее теплой и современной.</p>
+                
+                <p>Конструкция светильника — это торжество инженерной мысли и <strong>авторская работа</strong>. Основа выполнена из 84 слоев березового шпона, каждый из которых вырезан лазером и склеен в единый монолит. Такая структура обеспечивает не только прочность, но и невероятную глубину фактуры.</p>
+                
+                <p>Свет, проходя сквозь оливковое стекло винных бутылок, приобретает уникальный спектр рассеивания, наполняя комнату мягким, «жилым» свечением. Это акцент <strong>эко-дизайна</strong>, который делает интерьер живым и индивидуальным, идеально вписываясь в <strong>скандинавский стиль</strong> и теплый минимализм.</p>
+            </div>
 
             <ul class="specs-list">
                 <li>
                     <span>Материал</span>
-                    <span>Винное стекло, березовый шпон</span>
+                    <span>84 слоя натурального березового шпона</span>
                 </li>
                 <li>
-                    <span>Освещение</span>
-                    <span>Лампа Эдисона (теплый свет)</span>
+                    <span>Световая часть</span>
+                    <span>Расплавленное в печи стекло винных бутылок</span>
                 </li>
                 <li>
-                    <span>Производство</span>
-                    <span>Ручная сборка, фьюзинг</span>
+                    <span>Тип освещения</span>
+                    <span>Диффузное, теплое (для вечернего релакса)</span>
+                </li>
+                <li>
+                    <span>Особенности</span>
+                    <span>Ручная сборка, эко-дизайн</span>
                 </li>
             </ul>
 
@@ -330,8 +361,7 @@
     </main>
 
     <section class="lifestyle-section">
-        <img src="photo_2026-03-03 18.05.07.jpeg" alt="Светильник Amber в интерьере кухни" class="lifestyle-img">
-        <img src="photo_2026-03-03 18.05.12.jpeg" alt="Светильник Amber в праздничной сервировке" class="lifestyle-img">
+        <img src="photo_2026-03-03 18.05.07.jpeg" alt="Деревянная лампа из 84 слоев шпона на кухне" class="lifestyle-img"> <img src="photo_2026-03-03 18.05.12.jpeg" alt="Дизайнерский свет в сервировке стола" class="lifestyle-img">
     </section>
 
     <footer id="contacts">
