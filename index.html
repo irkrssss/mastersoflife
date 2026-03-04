@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&display=swap" rel="stylesheet">
     
     <style>
         :root {
@@ -146,13 +147,16 @@
             margin: 0 auto;
         }
 
-        .section-header {
-            font-family: var(--font-serif);
-            font-size: 3rem;
-            margin-bottom: 3rem;
-            color: var(--accent-glow);
-            text-align: center;
-        }
+       .section-header {
+    font-family: 'Tenor Sans', sans-serif;
+    font-size: 2.2rem; /* Сделали чуть меньше, так как заглавные буквы визуально массивнее */
+    margin-bottom: 3rem;
+    color: var(--accent-glow);
+    text-align: center;
+    text-transform: uppercase; /* Жестко переводит всё в верхний регистр (капс) */
+    letter-spacing: 6px; /* Широкий межбуквенный интервал — главный секрет дорогих лаконичных заголовков */
+    font-weight: 400;
+}
 
         .about-grid {
             display: grid;
