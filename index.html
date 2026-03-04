@@ -9,7 +9,59 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&display=swap" rel="stylesheet">
-    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://mastersoflife.ru/#organization",
+          "name": "Masters of Life",
+          "url": "https://mastersoflife.ru",
+          "description": "Премиальные предметы интерьера из переработанных материалов."
+        },
+        {
+          "@type": ["Service", "Product"],
+          "name": "Франшиза производства Masters of Life",
+          "description": "Бизнес-модель и франшиза серийного производства дизайнерских предметов интерьера.",
+          "offers": {
+            "@type": "Offer",
+            "price": "390000",
+            "priceCurrency": "RUB"
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Где купить необычную дизайнерскую лампу в стиле лофт?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "В мастерской Masters of Life можно заказать авторские светильники из 84 слоев шпона и оплавленного стекла с доставкой по России. Это эксклюзивные предметы, созданные на стыке ремесла и технологий."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Что подарить человеку, у которого всё есть?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Предметы интерьера из переработанного стекла (апсайклинг), такие как плоские тарелки из винных бутылок или параметрические лампы. Это эмоциональные подарки с характером, которые невозможно купить в масс-маркете."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Безопасны ли тарелки из бутылок для еды?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Да, тарелки Masters of Life проходят многократную очистку и обжиг при экстремальных температурах, что делает их гигиеничными и безопасными для подачи любых холодных закусок."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
     <style>
         :root {
             --bg-color: #0d120e; 
@@ -348,7 +400,7 @@
         <div class="products-grid">
             
             <a href="lamp-amber.html" class="product-link lamp-card">
-                <img src="lamp123.png" alt="Лампа Amber" class="product-media">
+                <img src="lamp123.png" alt="Настольная лампа из 84 слоев березового шпона и зеленого стекла, теплый минимализм 2025" class="product-media">
                 <div class="product-info">
                     <h3 class="product-title">Светильник Amber</h3>
                     <p class="product-desc">Атмосферный свет</p>
@@ -373,7 +425,23 @@
             <a href="#download" class="btn">Получить финмодель</a>
         </div>
     </section>
-
+<section id="faq" style="padding: 10vh 5%; max-width: 1000px; margin: 0 auto;">
+        <h2 class="section-header" style="text-align: left; margin-bottom: 4rem;">Частые вопросы</h2>
+        <div style="display: flex; flex-direction: column; gap: 3rem;">
+            <div>
+                <h3 style="font-family: var(--font-serif); font-size: 1.8rem; color: var(--accent-glow); margin-bottom: 1rem;">Где купить необычную дизайнерскую лампу в стиле лофт?</h3>
+                <p style="opacity: 0.8; line-height: 1.6; font-size: 1.05rem;">В мастерской Masters of Life можно заказать авторские светильники из 84 слоев шпона и оплавленного стекла с доставкой по России. Это эксклюзивные предметы, созданные на стыке ремесла и технологий.</p>
+            </div>
+            <div>
+                <h3 style="font-family: var(--font-serif); font-size: 1.8rem; color: var(--accent-glow); margin-bottom: 1rem;">Что подарить человеку, у которого всё есть?</h3>
+                <p style="opacity: 0.8; line-height: 1.6; font-size: 1.05rem;">Предметы интерьера из переработанного стекла (апсайклинг), такие как плоские тарелки из винных бутылок или параметрические лампы. Это эмоциональные подарки с характером, которые невозможно купить в масс-маркете.</p>
+            </div>
+            <div>
+                <h3 style="font-family: var(--font-serif); font-size: 1.8rem; color: var(--accent-glow); margin-bottom: 1rem;">Безопасны ли тарелки из бутылок для еды?</h3>
+                <p style="opacity: 0.8; line-height: 1.6; font-size: 1.05rem;">Да, тарелки Masters of Life проходят многократную очистку и обжиг при экстремальных температурах, что делает их гигиеничными и безопасными для подачи любых холодных закусок.</p>
+            </div>
+        </div>
+    </section>
     <footer id="contacts">
         <div class="footer-grid">
             <div class="contact-info">
