@@ -32,19 +32,16 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Tenor+Sans&display=swap" rel="stylesheet">
     
     <style>
         :root {
             --bg-color: #0d120e; 
-            --text-color: #e8e3d9; 
-            --accent-glow: #d97a46; 
-            --wood-dark: #2a2015;
-            --wood-light: #5c442e;
+            --text-color: #ffffff; /* Кристально белый цвет текста */
+            --accent-glow: #d97a46; /* Оранжевый акцент */
             
-            --font-serif: 'Cormorant Garamond', serif;
-            --font-sans: 'Montserrat', sans-serif;
+            --font-heading: 'Tenor Sans', sans-serif;
+            --font-text: 'Montserrat', sans-serif;
             --transition: 0.5s cubic-bezier(0.25, 1, 0.25, 1);
         }
 
@@ -59,7 +56,8 @@
         body {
             background-color: var(--bg-color);
             color: var(--text-color);
-            font-family: var(--font-sans);
+            font-family: var(--font-text);
+            font-weight: 600; /* Везде Semi-bold */
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
             position: relative;
@@ -90,8 +88,9 @@
         }
 
         .logo {
-            font-family: var(--font-serif);
+            font-family: var(--font-heading);
             font-size: 1.5rem;
+            font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 2px;
             text-decoration: none;
@@ -103,13 +102,13 @@
             color: var(--text-color);
             text-decoration: none;
             font-size: 0.8rem;
+            font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1px;
             transition: color var(--transition);
         }
         .nav-links a:hover { color: var(--accent-glow); }
 
-        /* Блок товара: выравнивание по верхнему краю (start) */
         .product-showcase {
             padding: 20vh 5% 10vh;
             max-width: 1400px;
@@ -117,10 +116,9 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 5rem;
-            align-items: start; /* Поднимает картинку и текст на один уровень */
+            align-items: start; 
         }
 
-        /* Левая колонка: Картинка + Характеристики */
         .left-column {
             display: flex;
             flex-direction: column;
@@ -131,16 +129,16 @@
             position: relative;
         }
 
- .main-image {
-    width: 80%; /* Уменьшили со 100% до 80% */
-    display: block; /* Делаем блочным для центрирования */
-    margin: 0 auto; /* Центрируем по горизонтали */
-    aspect-ratio: 4/5;
-    object-fit: cover;
-    border-radius: 250px 250px 10px 10px; 
-    filter: brightness(0.9);
-    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-}
+        .main-image {
+            width: 80%; 
+            display: block; 
+            margin: 0 auto; 
+            aspect-ratio: 4/5;
+            object-fit: cover;
+            border-radius: 250px 250px 10px 10px; 
+            filter: brightness(0.9);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
 
         .product-gallery::before {
             content: '';
@@ -154,7 +152,6 @@
             filter: blur(40px);
         }
 
-        /* Характеристики (перенесены под фото) */
         .specs-list {
             list-style: none;
             border-top: 1px solid rgba(255,255,255,0.1);
@@ -170,21 +167,27 @@
         }
 
         .specs-list span:first-child {
-            opacity: 0.9;
+            color: var(--accent-glow); /* Оранжевый цвет для названий характеристик */
+            font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1px;
             font-size: 0.8rem;
         }
 
-        /* Правая колонка: Описание */
+        .specs-list span:last-child {
+            color: var(--text-color); /* Белый цвет для значений */
+            font-weight: 600;
+        }
+
         .product-details {
             display: flex;
             flex-direction: column;
-            justify-content: flex-right;
+            justify-content: flex-start;
         }
 
         .breadcrumb {
             font-size: 0.8rem;
+            font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 2px;
             color: var(--accent-glow);
@@ -194,22 +197,23 @@
         .breadcrumb a {
             color: var(--text-color);
             text-decoration: none;
-            opacity: 0.6;
-            transition: opacity 0.3s;
+            transition: color 0.3s;
         }
-        .breadcrumb a:hover { opacity: 1; }
+        .breadcrumb a:hover { color: var(--accent-glow); }
 
         .product-title {
-            font-family: var(--font-serif);
+            font-family: var(--font-heading);
+            font-weight: 600;
             font-size: clamp(2.5rem, 4vw, 4rem);
             line-height: 1.1;
             margin-bottom: 1.5rem;
+            color: var(--text-color);
         }
 
         .product-price {
-            font-family: var(--font-sans);
+            font-family: var(--font-text);
             font-size: 1.5rem;
-            font-weight: 500;
+            font-weight: 600;
             color: var(--accent-glow);
             margin-bottom: 2rem;
             display: flex;
@@ -218,26 +222,26 @@
         }
 
         .product-description {
-    font-size: 1.05rem;
-    line-height: 1.8;
-    opacity: 0.8;
-    margin-bottom: 3rem;
-    
-    /* Новые правила типографики */
-    text-align: justify; /* Выравнивание по ширине */
-    -webkit-hyphens: auto; /* Поддержка переносов для разных браузеров */
-    -moz-hyphens: auto;
-    -ms-hyphens: auto;
-    hyphens: auto;
-}
+            font-size: 1.05rem;
+            line-height: 1.8;
+            font-weight: 600;
+            color: var(--text-color);
+            margin-bottom: 3rem;
+            text-align: justify; 
+            -webkit-hyphens: auto; 
+            -moz-hyphens: auto;
+            -ms-hyphens: auto;
+            hyphens: auto;
+        }
+
         .product-description p {
-    margin-bottom: 0; /* Убираем интервалы между абзацами */
-    text-indent: 1.5rem; /* Классическая красная строка, так как убрали интервалы */
-}
-        /* Первый абзац традиционно печатается без красной строки */
-.product-description p:first-child {
-    text-indent: 0;
-}
+            margin-bottom: 0; 
+            text-indent: 1.5rem; 
+        }
+
+        .product-description p:first-child {
+            text-indent: 0;
+        }
 
         .btn-order {
             display: inline-flex;
@@ -245,11 +249,11 @@
             align-items: center;
             padding: 1.2rem 3rem;
             background: var(--accent-glow);
-            color: var(--bg-color);
+            color: var(--text-color); /* Белый текст на оранжевой кнопке */
             text-decoration: none;
             text-transform: uppercase;
             letter-spacing: 2px;
-            font-weight: 500;
+            font-weight: 600;
             border-radius: 4px;
             transition: all var(--transition);
             border: 1px solid var(--accent-glow);
@@ -261,25 +265,23 @@
             color: var(--accent-glow);
         }
 
-        /* Общие стили для секций ниже (Галерея и Отзывы) */
         .bottom-section {
             padding: 5vh 5%;
             max-width: 1400px;
             margin: 0 auto;
         }
 
-       .section-header {
-    font-family: 'Tenor Sans', sans-serif;
-    font-size: 2.2rem;
-    color: var(--accent-glow);
-    margin-bottom: 3rem;
-    text-align: left; /* Оставляем выравнивание по левому краю для этой страницы */
-    text-transform: uppercase;
-    letter-spacing: 6px;
-    font-weight: 400;
-}
+        .section-header {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 2.2rem;
+            color: var(--accent-glow);
+            margin-bottom: 3rem;
+            text-align: left; 
+            text-transform: uppercase;
+            letter-spacing: 6px;
+        }
 
-        /* Галерея (10 фото) */
         .photo-grid {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
@@ -293,7 +295,7 @@
             border-radius: 6px;
             filter: grayscale(15%) brightness(0.8);
             transition: all var(--transition);
-            cursor: pointer;
+            cursor: zoom-in;
         }
 
         .grid-img:hover {
@@ -303,30 +305,6 @@
             z-index: 2;
         }
 
-        /* Сетка отзывов (фотографии) */
-        .reviews-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-        }
-
-        .review-img {
-            width: 100%;
-            aspect-ratio: 3/4; /* Вертикальные скриншоты/фото */
-            object-fit: cover;
-            border-radius: 8px;
-            filter: brightness(0.85);
-            transition: all var(--transition);
-            border: 1px solid rgba(255,255,255,0.05);
-        }
-
-        .review-img:hover {
-            filter: brightness(1.05);
-            transform: translateY(-5px);
-            border-color: rgba(217, 122, 70, 0.3); /* Легкая рамка акцентного цвета */
-        }
-
-        /* Подвал */
         footer {
             padding: 10vh 5% 5vh;
             border-top: 1px solid rgba(255,255,255,0.05);
@@ -342,9 +320,29 @@
         }
 
         .contact-info { text-align: left; }
-        .contact-info h3 { font-family: var(--font-serif); font-size: 2.5rem; margin-bottom: 1.5rem; color: var(--accent-glow); }
-        .contact-info p { margin-bottom: 2rem; opacity: 0.8; font-size: 1.1rem; }
-        .contact-info a { color: var(--text-color); text-decoration: none; margin-right: 1.5rem; transition: color 0.3s; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; }
+        .contact-info h3 { 
+            font-family: var(--font-heading); 
+            font-weight: 600;
+            font-size: 2.5rem; 
+            margin-bottom: 1.5rem; 
+            color: var(--accent-glow); 
+        }
+        .contact-info p { 
+            font-weight: 600;
+            margin-bottom: 2rem; 
+            font-size: 1.1rem; 
+            color: var(--text-color);
+        }
+        .contact-info a { 
+            color: var(--text-color); 
+            font-weight: 600;
+            text-decoration: none; 
+            margin-right: 1.5rem; 
+            transition: color 0.3s; 
+            text-transform: uppercase; 
+            font-size: 0.85rem; 
+            letter-spacing: 1px; 
+        }
         .contact-info a:hover { color: var(--accent-glow); }
 
         .map-placeholder {
@@ -356,51 +354,49 @@
             align-items: center;
             justify-content: center;
             border: 1px dashed rgba(255, 255, 255, 0.15);
-            color: rgba(232, 227, 217, 0.5);
+            color: var(--text-color);
+            font-weight: 600;
             font-size: 0.9rem;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
 
-        .copyright { text-align: center; font-size: 0.8rem; opacity: 0.5; }
+        .copyright { 
+            text-align: center; 
+            font-size: 0.8rem; 
+            font-weight: 600;
+            color: var(--text-color);
+        }
 
         @media (max-width: 900px) {
             .product-showcase { grid-template-columns: 1fr; gap: 3rem; padding-top: 15vh; }
             .main-image { border-radius: 150px 150px 10px 10px; aspect-ratio: 1/1; }
             .photo-grid { grid-template-columns: repeat(2, 1fr); }
-            .reviews-grid { grid-template-columns: repeat(2, 1fr); }
             .footer-grid { grid-template-columns: 1fr; gap: 3rem; }
             .contact-info { text-align: center; }
         }
-        /* --- СТИЛИ ДЛЯ УВЕЛИЧЕНИЯ ФОТО (LIGHTBOX) --- */
-        /* Показываем курсор-лупу при наведении на маленькое фото */
-        .photo-grid .grid-img {
-            cursor: zoom-in;
-        }
 
-        /* Фон затемнения */
+        /* --- LIGHTBOX --- */
         .lightbox-overlay {
-            display: none; /* Скрыто по умолчанию */
+            display: none; 
             position: fixed;
-            z-index: 2000; /* Поверх всего, включая хедер */
+            z-index: 2000; 
             top: 0; left: 0;
             width: 100%; height: 100%;
             background-color: rgba(0, 0, 0, 0.9);
-            backdrop-filter: blur(10px); /* Легкое размытие фона */
+            backdrop-filter: blur(10px); 
             justify-content: center;
             align-items: center;
             opacity: 0;
             transition: opacity 0.5s ease;
-            cursor: zoom-out; /* Указатель от Zoom-out при клике на фон */
+            cursor: zoom-out; 
         }
 
-        /* Класс, который JS добавляет при открытии */
         .lightbox-overlay.active {
             display: flex;
             opacity: 1;
         }
 
-        /* Само большое изображение */
         .lightbox-img {
             max-width: 90%;
             max-height: 90%;
@@ -408,21 +404,21 @@
             box-shadow: 0 10px 40px rgba(0,0,0,0.8);
             transform: scale(0.9);
             transition: transform 0.5s ease;
-            cursor: default; /* Обычный курсор на самой картинке */
+            cursor: default; 
         }
 
         .lightbox-overlay.active .lightbox-img {
             transform: scale(1);
         }
 
-        /* Кнопка закрытия (крестик) */
         .lightbox-close {
             position: absolute;
             top: 30px;
             right: 40px;
             color: var(--text-color);
             font-size: 40px;
-            font-family: var(--font-sans);
+            font-family: var(--font-text);
+            font-weight: 600;
             cursor: pointer;
             transition: color 0.3s;
             line-height: 1;
@@ -431,18 +427,19 @@
         .lightbox-close:hover {
             color: var(--accent-glow);
         }
-        /* Стрелки навигации в лайтбоксе */
+
         .lightbox-prev, .lightbox-next {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
             color: var(--text-color);
             font-size: 40px;
-            font-family: var(--font-sans);
+            font-family: var(--font-text);
+            font-weight: 600;
             cursor: pointer;
             transition: color var(--transition);
             padding: 20px;
-            user-select: none; /* Запрет выделения при быстром клике */
+            user-select: none; 
             z-index: 2001;
         }
 
@@ -454,10 +451,7 @@
         }
 
         @media (max-width: 768px) {
-            .lightbox-prev, .lightbox-next {
-                font-size: 30px;
-                padding: 10px;
-            }
+            .lightbox-prev, .lightbox-next { font-size: 30px; padding: 10px; }
             .lightbox-prev { left: 0; }
             .lightbox-next { right: 0; }
         }
@@ -485,27 +479,26 @@
             <ul class="specs-list">
                 <li>
                     <span>Материал</span>
-                    <span>84 слоя натурального березового шпона</span>
+                    <span>84 слоя березового шпона</span>
                 </li>
                 <li>
                     <span>Световая часть</span>
-                    расплавленное стекло винных бутылок
+                    <span>Расплавленное винное стекло</span>
                 </li>
                 <li>
                     <span>Тип освещения</span>
-                    <span>диффузное, теплое</span>
+                    <span>Диффузное, теплое</span>
                 </li>
                  <li>
                     <span>Размеры</span>
-                    <span> 555 </span>
+                    <span>555 мм</span>
                 </li>
             </ul>
-            
         </div>
 
         <div class="product-details">
             <div class="breadcrumb">
-                <a href="index.html">Главная</a> &nbsp;/&nbsp; Коллекция
+                <a href="index.html">Главная</a> &nbsp;/&nbsp; <a href="index.html#collection">Коллекция</a>
             </div>
             
             <h1 class="product-title">Светильник из дерева ручной работы Amber</h1>
@@ -517,9 +510,9 @@
             <div class="product-description">
                 <p>Свет&nbsp;&mdash; это самый мощный инструмент трансформации пространства. Masters of Life создает уникальные светильники ручной работы. Основной корпус&nbsp;&mdash; это монолит из&nbsp;84&nbsp;слоев березового шпона, который обрамляет и&nbsp;удерживает внутри расплавленную винную бутылку. Такая структура обеспечивает не&nbsp;только прочность, но&nbsp;и&nbsp;невероятную глубину фактуры. Оливковое стекло создаёт мягкий янтарный свет с&nbsp;уникальным спектром рассеивания.</p>
                 <p>Светильник <strong>Amber</strong>&nbsp;&mdash; отличный подарок ценителю уюта, а мы уже упаковали его в красивую коробку.</p>
-                
             </div>
-<a href="https://www.wildberries.ru/brands/312193719-mol-masters-of-life" target="_blank" class="btn-order">Перейти в магазин</a>
+            
+            <a href="https://www.wildberries.ru/brands/312193719-mol-masters-of-life" target="_blank" class="btn-order">Перейти в магазин</a>
         </div>
     </main>
 
@@ -534,20 +527,34 @@
             <img src="lamp6.JPG" alt="Деталь 6" class="grid-img">
             <img src="lamp7.JPG" alt="Деталь 7" class="grid-img">
             <img src="lamp8.JPG" alt="Деталь 8" class="grid-img">
-               <img src="lamp9.JPG" alt="Деталь 7" class="grid-img">
-            <img src="lamp10.JPG" alt="Деталь 8" class="grid-img">
+            <img src="lamp9.JPG" alt="Деталь 9" class="grid-img">
+            <img src="lamp10.JPG" alt="Деталь 10" class="grid-img">
         </div>
     </section>
 
     <footer id="contacts">
+        <div class="footer-grid">
+            <div class="contact-info">
+                <h3>Свяжитесь с нами</h3>
+                <p>hello@mastersoflife.ru<br>+7 (999) 000-00-00</p>
+                <a href="#">Telegram</a>
+                <a href="#">WhatsApp</a>
+                <a href="#">Instagram</a>
+            </div>
+            <div class="map-placeholder">
+                Место для интерактивной карты
+            </div>
+        </div>
         <p class="copyright">&copy; 2026 Masters of Life. Производство в России.</p>
     </footer>
-<div class="lightbox-overlay" id="lightboxOverlay">
+
+    <div class="lightbox-overlay" id="lightboxOverlay">
         <span class="lightbox-close" id="lightboxClose">&times;</span>
         <span class="lightbox-prev" id="lightboxPrev">&#10094;</span>
         <span class="lightbox-next" id="lightboxNext">&#10095;</span>
         <img src="" alt="Увеличенное изображение" class="lightbox-img" id="lightboxImg">
     </div>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const overlay = document.getElementById('lightboxOverlay');
@@ -556,13 +563,10 @@
             const prevBtn = document.getElementById('lightboxPrev');
             const nextBtn = document.getElementById('lightboxNext');
             
-            // Находим все картинки и превращаем их в массив для удобной работы с индексами
             const galleryImages = Array.from(document.querySelectorAll('.photo-grid .grid-img'));
             let currentIndex = 0;
 
-            // Функция показа картинки по её индексу
             function showImage(index) {
-                // Закольцовываем галерею
                 if (index < 0) index = galleryImages.length - 1;
                 if (index >= galleryImages.length) index = 0;
                 currentIndex = index;
@@ -574,18 +578,16 @@
                 lightboxImg.setAttribute('alt', currentAlt);
             }
 
-            // Открытие окна при клике на миниатюру
             galleryImages.forEach((img, index) => {
                 img.addEventListener('click', function() {
                     showImage(index);
                     overlay.classList.add('active');
-                    document.body.style.overflow = 'hidden'; // Блокируем скролл страницы
+                    document.body.style.overflow = 'hidden'; 
                 });
             });
 
-            // Навигация по клику на стрелки
             prevBtn.addEventListener('click', function(e) {
-                e.stopPropagation(); // Не даем клику провалиться на фон (чтобы не закрывалось окно)
+                e.stopPropagation(); 
                 showImage(currentIndex - 1);
             });
 
@@ -594,29 +596,25 @@
                 showImage(currentIndex + 1);
             });
 
-            // Функция закрытия
             function closeLightbox() {
                 overlay.classList.remove('active');
-                document.body.style.overflow = ''; // Возвращаем скролл
+                document.body.style.overflow = ''; 
                 
                 setTimeout(() => {
                     lightboxImg.setAttribute('src', '');
                 }, 500);
             }
 
-            // Закрытие при клике на крестик
             closeBtn.addEventListener('click', closeLightbox);
 
-            // Закрытие при клике на темный фон (мимо картинки и стрелок)
             overlay.addEventListener('click', function(e) {
                 if (e.target === overlay) {
                     closeLightbox();
                 }
             });
 
-            // Управление с клавиатуры
             document.addEventListener('keydown', function(e) {
-                if (!overlay.classList.contains('active')) return; // Работает только если окно открыто
+                if (!overlay.classList.contains('active')) return; 
                 
                 if (e.key === 'Escape') {
                     closeLightbox();
