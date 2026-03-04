@@ -32,13 +32,13 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Tenor+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&family=Tenor+Sans&display=swap" rel="stylesheet">
     
     <style>
-        :root {
+:root {
             --bg-color: #0d120e; 
-            --text-color: #ffffff; /* Кристально белый цвет текста */
-            --accent-glow: #d97a46; /* Оранжевый акцент */
+            --text-color: #e4e4e4; /* Чуть более серый (смягченный белый) */
+            --accent-glow: #d97a46; 
             
             --font-heading: 'Tenor Sans', sans-serif;
             --font-text: 'Montserrat', sans-serif;
@@ -57,7 +57,7 @@
             background-color: var(--bg-color);
             color: var(--text-color);
             font-family: var(--font-text);
-            font-weight: 600; /* Везде Semi-bold */
+            font-weight: 550; /* Везде Semi-bold */
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
             position: relative;
@@ -90,7 +90,7 @@
         .logo {
             font-family: var(--font-heading);
             font-size: 1.5rem;
-            font-weight: 600;
+            font-weight: 550;
             text-transform: uppercase;
             letter-spacing: 2px;
             text-decoration: none;
@@ -102,7 +102,7 @@
             color: var(--text-color);
             text-decoration: none;
             font-size: 0.8rem;
-            font-weight: 600;
+            font-weight: 550;
             text-transform: uppercase;
             letter-spacing: 1px;
             transition: color var(--transition);
@@ -168,7 +168,7 @@
 
         .specs-list span:first-child {
             color: var(--accent-glow); /* Оранжевый цвет для названий характеристик */
-            font-weight: 600;
+            font-weight: 550;
             text-transform: uppercase;
             letter-spacing: 1px;
             font-size: 0.8rem;
@@ -176,7 +176,7 @@
 
         .specs-list span:last-child {
             color: var(--text-color); /* Белый цвет для значений */
-            font-weight: 600;
+            font-weight: 550;
         }
 
         .product-details {
@@ -187,7 +187,7 @@
 
         .breadcrumb {
             font-size: 0.8rem;
-            font-weight: 600;
+            font-weight: 550;
             text-transform: uppercase;
             letter-spacing: 2px;
             color: var(--accent-glow);
@@ -201,10 +201,10 @@
         }
         .breadcrumb a:hover { color: var(--accent-glow); }
 
-        .product-title {
+.product-title {
             font-family: var(--font-heading);
-            font-weight: 600;
-            font-size: clamp(2.5rem, 4vw, 4rem);
+            font-weight: 550;
+            font-size: clamp(2rem, 3vw, 3rem); /* Заголовок стал меньше */
             line-height: 1.1;
             margin-bottom: 1.5rem;
             color: var(--text-color);
@@ -213,7 +213,7 @@
         .product-price {
             font-family: var(--font-text);
             font-size: 1.5rem;
-            font-weight: 600;
+            font-weight: 550;
             color: var(--accent-glow);
             margin-bottom: 2rem;
             display: flex;
@@ -224,7 +224,7 @@
         .product-description {
             font-size: 1.05rem;
             line-height: 1.8;
-            font-weight: 600;
+            font-weight: 550;
             color: var(--text-color);
             margin-bottom: 3rem;
             text-align: justify; 
@@ -253,7 +253,7 @@
             text-decoration: none;
             text-transform: uppercase;
             letter-spacing: 2px;
-            font-weight: 600;
+            font-weight: 550;
             border-radius: 4px;
             transition: all var(--transition);
             border: 1px solid var(--accent-glow);
@@ -273,7 +273,7 @@
 
         .section-header {
             font-family: var(--font-heading);
-            font-weight: 600;
+            font-weight: 550;
             font-size: 2.2rem;
             color: var(--accent-glow);
             margin-bottom: 3rem;
@@ -322,20 +322,20 @@
         .contact-info { text-align: left; }
         .contact-info h3 { 
             font-family: var(--font-heading); 
-            font-weight: 600;
+            font-weight: 550;
             font-size: 2.5rem; 
             margin-bottom: 1.5rem; 
             color: var(--accent-glow); 
         }
         .contact-info p { 
-            font-weight: 600;
+            font-weight: 550;
             margin-bottom: 2rem; 
             font-size: 1.1rem; 
             color: var(--text-color);
         }
         .contact-info a { 
             color: var(--text-color); 
-            font-weight: 600;
+            font-weight: 550;
             text-decoration: none; 
             margin-right: 1.5rem; 
             transition: color 0.3s; 
@@ -355,7 +355,7 @@
             justify-content: center;
             border: 1px dashed rgba(255, 255, 255, 0.15);
             color: var(--text-color);
-            font-weight: 600;
+            font-weight: 550;
             font-size: 0.9rem;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -364,7 +364,7 @@
         .copyright { 
             text-align: center; 
             font-size: 0.8rem; 
-            font-weight: 600;
+            font-weight: 550;
             color: var(--text-color);
         }
 
@@ -418,7 +418,7 @@
             color: var(--text-color);
             font-size: 40px;
             font-family: var(--font-text);
-            font-weight: 600;
+            font-weight: 550;
             cursor: pointer;
             transition: color 0.3s;
             line-height: 1;
@@ -435,7 +435,7 @@
             color: var(--text-color);
             font-size: 40px;
             font-family: var(--font-text);
-            font-weight: 600;
+            font-weight: 550;
             cursor: pointer;
             transition: color var(--transition);
             padding: 20px;
@@ -533,18 +533,6 @@
     </section>
 
     <footer id="contacts">
-        <div class="footer-grid">
-            <div class="contact-info">
-                <h3>Свяжитесь с нами</h3>
-                <p>hello@mastersoflife.ru<br>+7 (999) 000-00-00</p>
-                <a href="#">Telegram</a>
-                <a href="#">WhatsApp</a>
-                <a href="#">Instagram</a>
-            </div>
-            <div class="map-placeholder">
-                Место для интерактивной карты
-            </div>
-        </div>
         <p class="copyright">&copy; 2026 Masters of Life. Производство в России.</p>
     </footer>
 
