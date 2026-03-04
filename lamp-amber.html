@@ -427,6 +427,36 @@
         .lightbox-close:hover {
             color: var(--accent-glow);
         }
+        /* Стрелки навигации в лайтбоксе */
+        .lightbox-prev, .lightbox-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-color);
+            font-size: 40px;
+            font-family: var(--font-sans);
+            cursor: pointer;
+            transition: color var(--transition);
+            padding: 20px;
+            user-select: none; /* Запрет выделения при быстром клике */
+            z-index: 2001;
+        }
+
+        .lightbox-prev { left: 5%; }
+        .lightbox-next { right: 5%; }
+
+        .lightbox-prev:hover, .lightbox-next:hover {
+            color: var(--accent-glow);
+        }
+
+        @media (max-width: 768px) {
+            .lightbox-prev, .lightbox-next {
+                font-size: 30px;
+                padding: 10px;
+            }
+            .lightbox-prev { left: 0; }
+            .lightbox-next { right: 0; }
+        }
     </style>
 </head>
 <body>
@@ -522,6 +552,8 @@
     </footer>
 <div class="lightbox-overlay" id="lightboxOverlay">
         <span class="lightbox-close" id="lightboxClose">&times;</span>
+        <span class="lightbox-prev" id="lightboxPrev">&#10094;</span>
+        <span class="lightbox-next" id="lightboxNext">&#10095;</span>
         <img src="" alt="Увеличенное изображение" class="lightbox-img" id="lightboxImg">
     </div>
     <script>
@@ -529,21 +561,45 @@
             const overlay = document.getElementById('lightboxOverlay');
             const lightboxImg = document.getElementById('lightboxImg');
             const closeBtn = document.getElementById('lightboxClose');
-            // Находим все картинки ТОЛЬКО в блоке "В деталях"
-            const galleryImages = document.querySelectorAll('.photo-grid .grid-img');
+            const prevBtn = document.getElementById('lightboxPrev');
+            const nextBtn = document.getElementById('lightboxNext');
+            
+            // Находим все картинки и превращаем их в массив для удобной работы с индексами
+            const galleryImages = Array.from(document.querySelectorAll('.photo-grid .grid-img'));
+            let currentIndex = 0;
 
-            // Открытие окна при клике на фото
-            galleryImages.forEach(img => {
+            // Функция показа картинки по её индексу
+            function showImage(index) {
+                // Закольцовываем галерею
+                if (index < 0) index = galleryImages.length - 1;
+                if (index >= galleryImages.length) index = 0;
+                currentIndex = index;
+                
+                const currentSrc = galleryImages[currentIndex].getAttribute('src');
+                const currentAlt = galleryImages[currentIndex].getAttribute('alt');
+                
+                lightboxImg.setAttribute('src', currentSrc);
+                lightboxImg.setAttribute('alt', currentAlt);
+            }
+
+            // Открытие окна при клике на миниатюру
+            galleryImages.forEach((img, index) => {
                 img.addEventListener('click', function() {
-                    const currentSrc = this.getAttribute('src');
-                    const currentAlt = this.getAttribute('alt');
-                    
-                    lightboxImg.setAttribute('src', currentSrc);
-                    lightboxImg.setAttribute('alt', currentAlt);
-                    
+                    showImage(index);
                     overlay.classList.add('active');
                     document.body.style.overflow = 'hidden'; // Блокируем скролл страницы
                 });
+            });
+
+            // Навигация по клику на стрелки
+            prevBtn.addEventListener('click', function(e) {
+                e.stopPropagation(); // Не даем клику провалиться на фон (чтобы не закрывалось окно)
+                showImage(currentIndex - 1);
+            });
+
+            nextBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                showImage(currentIndex + 1);
             });
 
             // Функция закрытия
@@ -551,7 +607,6 @@
                 overlay.classList.remove('active');
                 document.body.style.overflow = ''; // Возвращаем скролл
                 
-                // Очищаем src после анимации закрытия, чтобы при следующем открытии не моргала старая картинка
                 setTimeout(() => {
                     lightboxImg.setAttribute('src', '');
                 }, 500);
@@ -560,17 +615,23 @@
             // Закрытие при клике на крестик
             closeBtn.addEventListener('click', closeLightbox);
 
-            // Закрытие при клике на темный фон (но не на саму картинку)
+            // Закрытие при клике на темный фон (мимо картинки и стрелок)
             overlay.addEventListener('click', function(e) {
-                if (e.target !== lightboxImg) {
+                if (e.target === overlay) {
                     closeLightbox();
                 }
             });
 
-            // Закрытие при нажатии клавиши Esc
+            // Управление с клавиатуры
             document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape' && overlay.classList.contains('active')) {
+                if (!overlay.classList.contains('active')) return; // Работает только если окно открыто
+                
+                if (e.key === 'Escape') {
                     closeLightbox();
+                } else if (e.key === 'ArrowLeft') {
+                    showImage(currentIndex - 1);
+                } else if (e.key === 'ArrowRight') {
+                    showImage(currentIndex + 1);
                 }
             });
         });
