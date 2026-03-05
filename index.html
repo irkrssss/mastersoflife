@@ -7,8 +7,8 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&family=Tenor+Sans&display=swap" rel="stylesheet">
+    
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -65,13 +65,13 @@
     <style>
         :root {
             --bg-color: #0d120e; 
-            --text-color: #e8e3d9; 
+            --text-color: #c4c4c4; /* Единый мягкий серый цвет текста */
             --accent-glow: #d97a46; 
             --wood-dark: #2a2015;
             --wood-light: #5c442e;
             
-            --font-serif: 'Cormorant Garamond', serif;
-            --font-sans: 'Montserrat', sans-serif;
+            --font-heading: 'Tenor Sans', sans-serif;
+            --font-text: 'Montserrat', sans-serif;
             --transition: 0.5s cubic-bezier(0.25, 1, 0.25, 1);
         }
 
@@ -86,7 +86,8 @@
         body {
             background-color: var(--bg-color);
             color: var(--text-color);
-            font-family: var(--font-sans);
+            font-family: var(--font-text);
+            font-weight: 550; /* Единая толщина */
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
             position: relative;
@@ -117,8 +118,9 @@
         }
 
         .logo {
-            font-family: var(--font-serif);
+            font-family: var(--font-heading);
             font-size: 1.5rem;
+            font-weight: 550;
             text-transform: uppercase;
             letter-spacing: 2px;
             text-decoration: none;
@@ -130,6 +132,7 @@
             color: var(--text-color);
             text-decoration: none;
             font-size: 0.8rem;
+            font-weight: 550;
             text-transform: uppercase;
             letter-spacing: 1px;
             transition: color var(--transition);
@@ -158,7 +161,6 @@
             text-align: center;
             padding: 0 5%;
             
-            /* Градиент стал прозрачнее сверху и затемняется только к низу */
             background-image: 
                 linear-gradient(to bottom, rgba(13, 18, 14, 0) 0%, rgba(13, 18, 14, 0.1) 40%, rgba(13, 18, 14, 0.85) 100%),
                 url('cover.png');
@@ -168,11 +170,10 @@
         }
 
         .massive-title {
-            font-family: var(--font-serif);
+            font-family: var(--font-heading); /* Шрифт Tenor Sans */
             font-size: clamp(3rem, 12vw, 10rem);
-            font-weight: 400;
+            font-weight: 550;
             line-height: 0.9;
-            /* Сдвиг заголовка вправо и отступ снизу */
             margin-top: 25vh;
             margin-bottom: 1rem; 
             margin-left: 30rem; 
@@ -181,16 +182,16 @@
             text-shadow: 0 10px 30px rgba(0,0,0,0.8);
         }
 
-        .massive-title span { color: var(--accent-glow); font-style: italic; }
+        .massive-title span { color: var(--accent-glow); }
 
         .hero p {
+            font-family: var(--font-text);
             font-size: 1.2rem;
             max-width: 600px;
-            font-weight: 300;
+            font-weight: 550;
             line-height: 1.6;
-            opacity: 0.9;
+            color: var(--text-color);
             text-shadow: 0 2px 10px rgba(0,0,0,0.8);
-            /* Опускаем мелкий текст чуть ниже */
             margin-top: 6rem; 
         }
 
@@ -200,16 +201,16 @@
             margin: 0 auto;
         }
 
-       .section-header {
-    font-family: 'Tenor Sans', sans-serif;
-    font-size: 2.2rem; /* Сделали чуть меньше, так как заглавные буквы визуально массивнее */
-    margin-bottom: 3rem;
-    color: var(--accent-glow);
-    text-align: center;
-    text-transform: uppercase; /* Жестко переводит всё в верхний регистр (капс) */
-    letter-spacing: 6px; /* Широкий межбуквенный интервал — главный секрет дорогих лаконичных заголовков */
-    font-weight: 400;
-}
+        .section-header {
+            font-family: var(--font-heading);
+            font-size: 2.2rem;
+            font-weight: 550;
+            margin-bottom: 3rem;
+            color: var(--accent-glow);
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 6px;
+        }
 
         .about-grid {
             display: grid;
@@ -220,9 +221,10 @@
 
         .about-text p {
             font-size: 1.1rem;
+            font-weight: 550;
             margin-bottom: 1.5rem;
             line-height: 1.8;
-            opacity: 0.9;
+            color: var(--text-color);
         }
 
         .about-image-wrapper {
@@ -252,24 +254,21 @@
             position: relative;
         }
 
-        /* Изображения в коллекции: меньше, без арок */
         .product-media {
             width: 60%;
             margin: 0 auto;
             display: block;
             aspect-ratio: 4/5;
             object-fit: cover;
-            border-radius: 8px; /* Обычное скругление вместо арки */
+            border-radius: 8px; 
             filter: brightness(0.85);
             transition: all var(--transition);
         }
 
-        /* Анимация для лампы: загорается */
         .lamp-card:hover .product-media { 
             filter: brightness(1.25) drop-shadow(0 0 25px var(--accent-glow)); 
         }
 
-        /* Анимация для тарелок: увеличиваются */
         .plate-card:hover .product-media { 
             transform: scale(1.05);
             filter: brightness(1); 
@@ -281,13 +280,17 @@
         }
 
         .product-title {
-            font-family: var(--font-serif);
-            font-size: 2rem;
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            font-weight: 550;
             margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
         }
 
         .product-desc {
             font-size: 0.85rem;
+            font-weight: 550;
             text-transform: uppercase;
             letter-spacing: 2px;
             color: var(--accent-glow);
@@ -301,22 +304,51 @@
             border: 1px solid rgba(255,255,255,0.05);
         }
 
-        .franchise-block p { max-width: 600px; margin: 0 auto 3rem; line-height: 1.6; }
+        .franchise-block p { 
+            max-width: 600px; 
+            margin: 0 auto 3rem; 
+            line-height: 1.6; 
+            font-weight: 550; 
+        }
 
+        /* Кнопка в стиле страницы лампы */
         .btn {
             display: inline-block;
-            padding: 1rem 3rem;
-            background: transparent;
+            padding: 1.2rem 3rem;
+            background: var(--bg-color);
             border: 1px solid var(--accent-glow);
             color: var(--accent-glow);
             text-decoration: none;
             text-transform: uppercase;
             letter-spacing: 2px;
             font-size: 0.8rem;
+            font-weight: 550;
+            border-radius: 24px;
             transition: all var(--transition);
         }
 
-        .btn:hover { background: var(--accent-glow); color: var(--bg-color); }
+        .btn:hover { 
+            background: var(--accent-glow); 
+            color: var(--bg-color); 
+        }
+
+        /* FAQ стили вынесены из инлайна для чистоты */
+        .faq-question {
+            font-family: var(--font-heading); 
+            font-size: 1.8rem; 
+            font-weight: 550;
+            color: var(--accent-glow); 
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .faq-answer {
+            color: var(--text-color);
+            line-height: 1.6; 
+            font-size: 1.05rem;
+            font-weight: 550;
+        }
 
         footer {
             padding: 10vh 5% 5vh;
@@ -332,9 +364,31 @@
         }
 
         .contact-info { text-align: left; }
-        .contact-info h3 { font-family: var(--font-serif); font-size: 2.5rem; margin-bottom: 1.5rem; color: var(--accent-glow); }
-        .contact-info p { margin-bottom: 2rem; opacity: 0.8; font-size: 1.1rem; }
-        .contact-info a { color: var(--text-color); text-decoration: none; margin-right: 1.5rem; transition: color 0.3s; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; }
+        .contact-info h3 { 
+            font-family: var(--font-heading); 
+            font-size: 2.5rem; 
+            font-weight: 550;
+            margin-bottom: 1.5rem; 
+            color: var(--accent-glow); 
+            text-transform: uppercase;
+            letter-spacing: 4px;
+        }
+        .contact-info p { 
+            margin-bottom: 2rem; 
+            font-size: 1.1rem; 
+            font-weight: 550; 
+            color: var(--text-color); 
+        }
+        .contact-info a { 
+            color: var(--text-color); 
+            text-decoration: none; 
+            margin-right: 1.5rem; 
+            transition: color 0.3s; 
+            text-transform: uppercase; 
+            font-size: 0.85rem; 
+            letter-spacing: 1px; 
+            font-weight: 550; 
+        }
         .contact-info a:hover { color: var(--accent-glow); }
 
         .map-placeholder {
@@ -346,18 +400,24 @@
             align-items: center;
             justify-content: center;
             border: 1px dashed rgba(255, 255, 255, 0.15);
-            color: rgba(232, 227, 217, 0.5);
+            color: var(--text-color);
             font-size: 0.9rem;
             text-transform: uppercase;
             letter-spacing: 1px;
+            font-weight: 550;
         }
 
-        .copyright { text-align: center; font-size: 0.8rem; opacity: 0.5; }
+        .copyright { 
+            text-align: center; 
+            font-size: 0.8rem; 
+            font-weight: 550; 
+            color: var(--text-color); 
+        }
 
         @media (max-width: 768px) {
             .nav-links { display: none; }
             .about-grid, .products-grid, .footer-grid { grid-template-columns: 1fr; gap: 3rem; }
-            .massive-title { font-size: 4rem; }
+            .massive-title { font-size: 4rem; margin-left: 0; margin-top: 15vh;}
             .franchise-block { border-radius: 20px 100px 100px 20px; padding: 3rem 1.5rem; }
             .contact-info { text-align: center; }
             .contact-info a { margin: 0 0.75rem; }
@@ -425,23 +485,25 @@
             <a href="#download" class="btn">Получить финмодель</a>
         </div>
     </section>
-<section id="faq" style="padding: 10vh 5%; max-width: 1000px; margin: 0 auto;">
+
+    <section id="faq" style="padding: 10vh 5%; max-width: 1000px; margin: 0 auto;">
         <h2 class="section-header" style="text-align: left; margin-bottom: 4rem;">Частые вопросы</h2>
         <div style="display: flex; flex-direction: column; gap: 3rem;">
             <div>
-                <h3 style="font-family: var(--font-serif); font-size: 1.8rem; color: var(--accent-glow); margin-bottom: 1rem;">Где купить необычную дизайнерскую лампу в стиле лофт?</h3>
-                <p style="opacity: 0.8; line-height: 1.6; font-size: 1.05rem;">В мастерской Masters of Life можно заказать авторские светильники из 84 слоев шпона и оплавленного стекла с доставкой по России. Это эксклюзивные предметы, созданные на стыке ремесла и технологий.</p>
+                <h3 class="faq-question">Где купить необычную дизайнерскую лампу в стиле лофт?</h3>
+                <p class="faq-answer">В мастерской Masters of Life можно заказать авторские светильники из 84 слоев шпона и оплавленного стекла с доставкой по России. Это эксклюзивные предметы, созданные на стыке ремесла и технологий.</p>
             </div>
             <div>
-                <h3 style="font-family: var(--font-serif); font-size: 1.8rem; color: var(--accent-glow); margin-bottom: 1rem;">Что подарить человеку, у которого всё есть?</h3>
-                <p style="opacity: 0.8; line-height: 1.6; font-size: 1.05rem;">Предметы интерьера из переработанного стекла (апсайклинг), такие как плоские тарелки из винных бутылок или параметрические лампы. Это эмоциональные подарки с характером, которые невозможно купить в масс-маркете.</p>
+                <h3 class="faq-question">Что подарить человеку, у которого всё есть?</h3>
+                <p class="faq-answer">Предметы интерьера из переработанного стекла (апсайклинг), такие как плоские тарелки из винных бутылок или параметрические лампы. Это эмоциональные подарки с характером, которые невозможно купить в масс-маркете.</p>
             </div>
             <div>
-                <h3 style="font-family: var(--font-serif); font-size: 1.8rem; color: var(--accent-glow); margin-bottom: 1rem;">Безопасны ли тарелки из бутылок для еды?</h3>
-                <p style="opacity: 0.8; line-height: 1.6; font-size: 1.05rem;">Да, тарелки Masters of Life проходят многократную очистку и обжиг при экстремальных температурах, что делает их гигиеничными и безопасными для подачи любых холодных закусок.</p>
+                <h3 class="faq-question">Безопасны ли тарелки из бутылок для еды?</h3>
+                <p class="faq-answer">Да, тарелки Masters of Life проходят многократную очистку и обжиг при экстремальных температурах, что делает их гигиеничными и безопасными для подачи любых холодных закусок.</p>
             </div>
         </div>
     </section>
+
     <footer id="contacts">
         <div class="footer-grid">
             <div class="contact-info">
