@@ -332,22 +332,69 @@
             color: var(--bg-color); 
         }
 
-        /* FAQ стили вынесены из инлайна для чистоты */
-        .faq-question {
-            font-family: var(--font-heading); 
-            font-size: 1.8rem; 
+/* --- СТИЛИ ДЛЯ РАСКРЫВАЮЩЕГОСЯ FAQ --- */
+        .faq-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 1.5rem 0;
+        }
+
+        /* Убираем стандартный треугольник браузера */
+        .faq-item summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .faq-item summary {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: var(--font-heading);
+            font-size: 1.3rem; 
             font-weight: 550;
-            color: var(--accent-glow); 
-            margin-bottom: 1rem;
+            color: var(--accent-glow);
             text-transform: uppercase;
             letter-spacing: 2px;
+            cursor: pointer;
+            list-style: none; /* Для Firefox */
+            transition: color var(--transition);
+        }
+
+        .faq-item summary:hover {
+            color: var(--text-color);
+        }
+
+        /* Иконка плюсика */
+        .faq-icon {
+            font-family: var(--font-text);
+            font-size: 2rem;
+            font-weight: 300;
+            line-height: 1;
+            transition: transform 0.4s ease;
+        }
+
+        /* Когда список открыт, плюсик крутится и превращается в крестик */
+        .faq-item[open] .faq-icon {
+            transform: rotate(45deg);
+            color: var(--text-color);
         }
 
         .faq-answer {
+            padding-top: 1.5rem;
             color: var(--text-color);
-            line-height: 1.6; 
+            line-height: 1.6;
             font-size: 1.05rem;
             font-weight: 550;
+            opacity: 0;
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
         }
 
         footer {
@@ -486,21 +533,24 @@
         </div>
     </section>
 
-    <section id="faq" style="padding: 10vh 5%; max-width: 1000px; margin: 0 auto;">
-        <h2 class="section-header" style="text-align: left; margin-bottom: 4rem;">Частые вопросы</h2>
-        <div style="display: flex; flex-direction: column; gap: 3rem;">
-            <div>
-                <h3 class="faq-question">Где купить необычную дизайнерскую лампу в стиле лофт?</h3>
-                <p class="faq-answer">В мастерской Masters of Life можно заказать авторские светильники из 84 слоев шпона и оплавленного стекла с доставкой по России. Это эксклюзивные предметы, созданные на стыке ремесла и технологий.</p>
-            </div>
-            <div>
-                <h3 class="faq-question">Что подарить человеку, у которого всё есть?</h3>
-                <p class="faq-answer">Предметы интерьера из переработанного стекла (апсайклинг), такие как плоские тарелки из винных бутылок или параметрические лампы. Это эмоциональные подарки с характером, которые невозможно купить в масс-маркете.</p>
-            </div>
-            <div>
-                <h3 class="faq-question">Безопасны ли тарелки из бутылок для еды?</h3>
-                <p class="faq-answer">Да, тарелки Masters of Life проходят многократную очистку и обжиг при экстремальных температурах, что делает их гигиеничными и безопасными для подачи любых холодных закусок.</p>
-            </div>
+   <section id="faq" style="max-width: 1000px; margin: 0 auto;">
+        <h2 class="section-header" style="text-align: left; margin-bottom: 2rem;">Частые вопросы</h2>
+        
+        <div class="faq-list">
+            <details class="faq-item">
+                <summary>Где купить необычную дизайнерскую лампу в стиле лофт? <span class="faq-icon">+</span></summary>
+                <div class="faq-answer">В мастерской Masters of Life можно заказать авторские светильники из 84 слоев шпона и оплавленного стекла с доставкой по России. Это эксклюзивные предметы, созданные на стыке ремесла и технологий.</div>
+            </details>
+
+            <details class="faq-item">
+                <summary>Что подарить человеку, у которого всё есть? <span class="faq-icon">+</span></summary>
+                <div class="faq-answer">Предметы интерьера из переработанного стекла (апсайклинг), такие как плоские тарелки из винных бутылок или параметрические лампы. Это эмоциональные подарки с характером, которые невозможно купить в масс-маркете.</div>
+            </details>
+
+            <details class="faq-item">
+                <summary>Безопасны ли тарелки из бутылок для еды? <span class="faq-icon">+</span></summary>
+                <div class="faq-answer">Да, тарелки Masters of Life проходят многократную очистку и обжиг при экстремальных температурах, что делает их гигиеничными и безопасными для подачи любых холодных закусок.</div>
+            </details>
         </div>
     </section>
 
