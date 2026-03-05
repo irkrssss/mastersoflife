@@ -226,35 +226,96 @@
         }
 
         /* Галерея О НАС (6 фото) */
-        .about-gallery {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr); /* 3 колонки */
-            gap: 15px;
+/* --- НОВЫЕ СТИЛИ ДЛЯ СЛАЙДЕРА "О НАС" --- */
+        
+        /* Контейнер для всего слайдера справа */
+        .about-gallery-wrapper {
+            width: 80%;
+            margin: 0 auto;
         }
 
-        .about-gallery img {
+        /* Область главной фотографии */
+        .about-gallery-main {
+            position: relative;
+            margin-bottom: 1.5rem; /* Отступ до миниатюр */
+        }
+
+        /* Стилизация главной картинки (сохраняем арку) */
+        .main-about-img {
             width: 100%;
-            aspect-ratio: 1/1; /* Квадратные миниатюры */
+            border-radius: 190px 190px 5px 5px; /* Исходная арка */
+            aspect-ratio: 3/4;
             object-fit: cover;
-            border-radius: 8px; /* Мягкое скругление */
-            filter: grayscale(15%) brightness(0.85);
-            transition: all var(--transition);
-            cursor: pointer;
+            filter: grayscale(30%) contrast(1.1);
+            display: block;
+            transition: opacity 0.5s ease; /* Плавная смена */
         }
 
-        .about-gallery img:hover {
-            filter: grayscale(0%) brightness(1.1);
-            transform: scale(1.05);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
-            z-index: 2;
+        /* Стили стрелок навигации */
+        .about-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #fff;
+            background: rgba(0,0,0,0.3); /* Полупрозрачный фон */
+            font-size: 24px;
+            font-family: var(--font-text);
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: background 0.3s;
+            z-index: 10;
+            user-select: none;
         }
         
-        @media (max-width: 768px) {
-            .about-gallery {
-                grid-template-columns: repeat(2, 1fr); /* На мобильных по 2 фото в ряд */
-            }
+        .about-arrow:hover {
+            background: rgba(0,0,0,0.7);
+        }
+        
+        .about-arrow.prev { left: 15px; }
+        .about-arrow.next { right: 15px; }
+
+        /* Контейнер миниатюр */
+        .about-thumbnails {
+            display: flex;
+            gap: 10px; /* Отступ между миниатюрами */
+            justify-content: center; /* Центрируем их */
+            padding: 0 10px;
         }
 
+        /* Стили миниатюр */
+        .about-thumb {
+            width: calc(20% - 8px); /* Пять штук в ряд с учетом gap */
+            aspect-ratio: 1/1; /* Квадратные */
+            object-fit: cover;
+            border-radius: 8px; /* Мягкое скругление */
+            cursor: pointer;
+            border: 2px solid transparent; /* Рамка для активного состояния */
+            opacity: 0.6; /* Неактивные чуть тусклее */
+            transition: all 0.3s ease;
+        }
+
+        /* Ховер эффект */
+        .about-thumb:hover {
+            opacity: 1;
+        }
+
+        /* Стиль активной миниатюры */
+        .about-thumb.active {
+            border-color: var(--accent-glow); /* Оранжевая рамка */
+            opacity: 1;
+            transform: scale(1.05); /* Легкое увеличение */
+        }
+
+        /* Адаптив для мобильных */
+        @media (max-width: 768px) {
+            .about-gallery-wrapper {
+                width: 100%;
+            }
+            .about-arrow { font-size: 18px; padding: 8px 12px; }
+        }
+
+    
         .products-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -506,18 +567,27 @@
 <section id="about">
         <div class="about-grid">
             <div class="about-text">
-                <h2 class="section-header" style="text-align: left;">О НАС</h2>
+                <h2 class="section-header" style="text-align: left;">Манифест формы</h2>
                 <p>Наш путь начался с ручного ремесла и одной идеи — дать стеклу вторую жизнь, сохранив его благородство.</p>
                 <p>Сегодня Masters of Life — это серийное производство. Мы соединяем 84 слоя березового шпона и переработанное стекло, создавая предметы с глубоким культурным кодом и выверенной архитектурой.</p>
             </div>
             
-            <div class="about-gallery">
-                <img src="about1.jpg" alt="Процесс производства 1">
-                <img src="about2.jpg" alt="Процесс производства 2">
-                <img src="about3.jpg" alt="Процесс производства 3">
-                <img src="about4.jpg" alt="Процесс производства 4">
-                <img src="about5.jpg" alt="Процесс производства 5">
-                <img src="about6.jpg" alt="Процесс производства 6">
+            <div class="about-gallery-wrapper layered-frame">
+                
+                <div class="about-gallery-main">
+                    <span class="about-arrow prev" onclick="changeAboutSlide(-1)">&#10094;</span>
+                    <span class="about-arrow next" onclick="changeAboutSlide(1)">&#10095;</span>
+                    <img src="photo_2026-03-03 18.05.07.jpeg" alt="О нас - Главное фото" class="main-about-img" id="aboutMainImg">
+                </div>
+                
+                <div class="about-thumbnails">
+                    <img src="photo_2026-03-03 18.05.07.jpeg" alt="Миниатюра 1" class="about-thumb active" onclick="goToAboutSlide(0)">
+                    <img src="about_2.jpg" alt="Миниатюра 2" class="about-thumb" onclick="goToAboutSlide(1)">
+                    <img src="about_3.jpg" alt="Миниатюра 3" class="about-thumb" onclick="goToAboutSlide(2)">
+                    <img src="about_4.jpg" alt="Миниатюра 4" class="about-thumb" onclick="goToAboutSlide(3)">
+                    <img src="about_5.jpg" alt="Миниатюра 5" class="about-thumb" onclick="goToAboutSlide(4)">
+                </div>
+                
             </div>
         </div>
     </section>
@@ -589,5 +659,73 @@
         <p class="copyright">&copy; 2026 Masters of Life. Производство в России.</p>
     </footer>
 
+    <script>
+        let currentAboutSlide = 0;
+        
+        // Массив путей к изображениям (ЗАМЕНИТЕ НА ВАШИ РЕАЛЬНЫЕ ПУТИ)
+        const aboutSlides = [
+            'photo_2026-03-03 18.05.07.jpeg',
+            'about_2.jpg',
+            'about_3.jpg',
+            'about_4.jpg',
+            'about_5.jpg'
+        ];
+        
+        const aboutMainImg = document.getElementById('aboutMainImg');
+        const aboutThumbs = document.querySelectorAll('.about-thumb');
+        let aboutInterval;
+
+        // Функция показа конкретного слайда
+        function showAboutSlide(index) {
+            // Закольцовывание индекса
+            if (index >= aboutSlides.length) index = 0;
+            if (index < 0) index = aboutSlides.length - 1;
+            
+            currentAboutSlide = index;
+            
+            // Плавная смена источника изображения
+            aboutMainImg.style.opacity = '0';
+            setTimeout(() => {
+                aboutMainImg.src = aboutSlides[currentAboutSlide];
+                aboutMainImg.style.opacity = '1';
+            }, 200);
+
+            // Обновление активного класса миниатюр
+            aboutThumbs.forEach((thumb, i) => {
+                if (i === currentAboutSlide) {
+                    thumb.classList.add('active');
+                } else {
+                    thumb.classList.remove('active');
+                }
+            });
+        }
+
+        // Функция для кнопок право/лево
+        function changeAboutSlide(n) {
+            showAboutSlide(currentAboutSlide + n);
+            resetAboutInterval(); // Сброс автопрокрутки при ручном клике
+        }
+
+        // Функция для клика по миниатюре
+        function goToAboutSlide(n) {
+            showAboutSlide(n);
+            resetAboutInterval(); // Сброс автопрокрутки при ручном клике
+        }
+
+        // Управление автопрокруткой (3 секунды)
+        function startAboutInterval() {
+            aboutInterval = setInterval(() => {
+                changeAboutSlide(1);
+            }, 3000);
+        }
+
+        function resetAboutInterval() {
+            clearInterval(aboutInterval);
+            startAboutInterval();
+        }
+
+        // Инициализация автопрокрутки при загрузке
+        startAboutInterval();
+    </script>
 </body>
 </html>
