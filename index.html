@@ -240,19 +240,16 @@
             margin-bottom: 1.5rem; /* Отступ до миниатюр */
         }
 
-        /* Стилизация главной картинки (сохраняем арку) */
-/* Стилизация главной картинки (УБРАЛИ АРКУ, сделали простое скругление) */
+/* Стилизация главной картинки (Строгий прямоугольник без арки) */
         .main-about-img {
-            width: 80%;
-            /* ЗАМЕНЕНО: вместо 190px 190px... сделали единое мягкое скругление 8px */
-            border-radius: 8px; 
+            width: 100%;
+            border-radius: 0; /* Убрали все скругления */
             aspect-ratio: 3/4;
             object-fit: cover;
             filter: grayscale(30%) contrast(1.1);
             display: block;
-            transition: opacity 0.5s ease; /* Плавная смена при переключении */
+            transition: opacity 0.5s ease;
         }
-
         /* Стили стрелок навигации */
         .about-arrow {
             position: absolute;
@@ -566,15 +563,7 @@
         <p>Детали, которые вызывают эмоции. <br> Превращаем винные бутылки в экологичное искусство.</p>
     </section>
 
-<section id="about">
-        <div class="about-grid">
-            <div class="about-text">
-                <h2 class="section-header" style="text-align: left;">Манифест формы</h2>
-                <p>Наш путь начался с ручного ремесла и одной идеи — дать стеклу вторую жизнь, сохранив его благородство.</p>
-                <p>Сегодня Masters of Life — это серийное производство. Мы соединяем 84 слоя березового шпона и переработанное стекло, создавая предметы с глубоким культурным кодом и выверенной архитектурой.</p>
-            </div>
-            
-            <div class="about-gallery-wrapper layered-frame">
+<div class="about-gallery-wrapper">
                 
                 <div class="about-gallery-main">
                     <span class="about-arrow prev" onclick="changeAboutSlide(-1)">&#10094;</span>
@@ -591,8 +580,6 @@
                 </div>
                 
             </div>
-        </div>
-    </section>
 
     <section id="collection">
         <h2 class="section-header">КОЛЛЕКЦИЯ</h2>
