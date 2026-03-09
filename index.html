@@ -542,15 +542,34 @@
             .contact-info { text-align: center; }
             .contact-info a { margin: 0 0.75rem; }
             .product-media { width: 80%; }
+        }.logo {
+            display: block;
+            height: 35px; /* Высота логотипа */
+            width: 180px; /* ВАЖНО: подбери ширину так, чтобы твой логотип влез целиком */
+            
+            /* Заливаем форму нашим фирменным серым цветом */
+            background-color: var(--text-color); 
+            
+            /* Создаем маску из картинки */
+            -webkit-mask: url('logo.png') no-repeat center left;
+            -webkit-mask-size: contain;
+            mask: url('logo.png') no-repeat center left;
+            mask-size: contain;
+            
+            transition: background-color var(--transition);
+        }
+
+        /* Эффект при наведении: логотип становится оранжевым! */
+        .logo:hover {
+            background-color: var(--accent-glow);
         }
     </style>
 </head>
 <body>
 
 <header>
-        <a href="#home" class="logo">
-            <img src="logo.png" alt="Masters of Life">
-        </a>
+        <a href="#home" class="logo" aria-label="Masters of Life"></a>
+        
         <nav class="nav-links">
             <a href="#about">О нас</a>
             <a href="#collection">Коллекция</a>
@@ -559,7 +578,6 @@
             <a href="#contacts">Контакты</a>
         </nav>
     </header>
-
     <section class="hero" id="home">
         <h1 class="massive-title">Masters<br><span>of Life</span></h1>
         <p>Детали, которые вызывают эмоции. <br> Превращаем винные бутылки в экологичное искусство.</p>
